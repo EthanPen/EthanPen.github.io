@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ethan.Penx Blog</title>
+    <description>坐观垂钓者,徒有羡鱼情.</description>
+    <link>http://EthanPen.github.io/EthanPen.github.io/</link>
+    <atom:link href="http://EthanPen.github.io/EthanPen.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sat, 25 Jun 2016 00:27:30 +0800</pubDate>
+    <lastBuildDate>Sat, 25 Jun 2016 00:27:30 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Hello Blog</title>
+        <description>&lt;p&gt;“Life got real, moving on. ”&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;正文&lt;/h2&gt;
+
+&lt;p&gt;Ethan 的 Blog 应是落地于此了。&lt;/p&gt;
+
+&lt;p&gt;这一学期不出几日便要结束了，江南メ星也总算是更换了个瞎写东西的地方。&lt;/p&gt;
+
+&lt;p&gt;先前的博文挂放在&lt;a href=&quot;http://www.iteye.com/&quot;&gt;iTeye&lt;/a&gt;平台上，想想有些地方应该是不酷的。譬如，私人定制性不强，不酷；不太习惯地富文本编辑器，不酷。。。总而言之，就是不酷吧！&lt;/p&gt;
+
+&lt;p&gt;一件事不够酷，去做的积极性就不会高。之前生活中碰到的需要去记录、瞎写、总结的东西，却趁着&lt;a href=&quot;https://guides.github.com/features/mastering-markdown/&quot;&gt;MarkDown&lt;/a&gt;的优雅体验都存放到设备本地了，而奈何自用的设备为乞丐版MacPro13，且加上捉急的文档管理习惯，总让自己觉得不纯粹，不酷。 记得去年在上海实习的时候应该就有所耳闻过 &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; + &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; 快速 Building Blog 的技术方案，很有时尚感。&lt;/p&gt;
+
+&lt;p&gt;这种博客的搭建方式很受推荐，我个人也很是喜欢这种Blog Post出来的效果。
+当然它还有些其他的优点：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;流行的Git workflow ，&lt;strong&gt;Git Commit 即 Blog Post&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;GitHub Pages 提供的贴心服务，也不用去搞数据库、主机什么的。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Markdown&lt;/strong&gt; 让你更专注于写作。&lt;/li&gt;
+  &lt;li&gt;可以修改下DNS加个CNAME绑定自己的域名。&lt;/li&gt;
+  &lt;li&gt;Jekyll 较强的自定制性，各种模版引擎&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;当然在这之前我对涉及到的Jekyll及ruby等是不熟悉的，所以也有去YouTube上过了套Jekyll的课程， 跟视频实践Demo &lt;a href=&quot;https://ethanpen.github.io/planets-of-the-universe/&quot;&gt;&lt;strong&gt;planets-of-the-universe&lt;/strong&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;致谢&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;博客的Theme大致是基于有名的&lt;a href=&quot;https://github.com/IronSummitMedia/startbootstrap-clean-blog-jekyll&quot;&gt;Clean Blog-IronSummitMedia/startbootstrap-clean-blog-jekyll&lt;/a&gt;，以及 &lt;a href=&quot;https://github.com/Huxpro/huxpro.github.io&quot;&gt;Huxpro&lt;/a&gt; 的部分修改，感谢作者！&lt;/li&gt;
+  &lt;li&gt;感谢 Jekyll、Github Pages 和 Bootstrap!&lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Tue, 21 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://EthanPen.github.io/EthanPen.github.io/2016/06/21/Hello-Blog/</link>
+        <guid isPermaLink="true">http://EthanPen.github.io/EthanPen.github.io/2016/06/21/Hello-Blog/</guid>
+        
+        <category>Life</category>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

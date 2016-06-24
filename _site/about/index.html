@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="坐观垂钓者,徒有羡鱼情.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/EthanPen.github.io/img/favicon.ico">
+
+    <title>About - </title>
+
+    <link rel="canonical" href="http://EthanPen.github.io/EthanPen.github.io/about/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/EthanPen.github.io/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/EthanPen.github.io/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/EthanPen.github.io/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="http://cdn.staticfile.org/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/EthanPen.github.io/">Ethan.Penx Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/EthanPen.github.io/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/EthanPen.github.io/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/EthanPen.github.io/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Page Header -->
+<header class="intro-header" style="background-image: url('/EthanPen.github.io/img/about-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
+                <div class="site-heading">
+                    <h1>About</h1>
+                    <!--<hr class="small">-->
+                    <span class="subheading">Hey, this is Ethan.penx</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+        
+
+<!-- USE SIDEBAR -->
+    <!-- Post Container -->
+    		<div class="
+                col-lg-8 col-lg-offset-1
+                col-md-8 col-md-offset-1
+                col-sm-12
+                col-xs-12
+                post-container
+            ">
+    			<!-- Language Selector -->
+<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0" selected> 中文 Chinese </option>
+    <option value="1"> 英语 English </option>
+</select>
+
+<!-- Chinese Version -->
+<div class="zh post-container">
+    <blockquote>
+        坐观垂钓者,徒有羡鱼情.
+    </blockquote>
+    <li class="col" id="FMID_944208754FM"><div class="nodecontent">优质资源</div>
+        <ul class="subexp">
+    <li class="col" id="FMID_1668072232FM"><div class="nodecontent">书</div>
+        <ul class="subexp">
+    <li class="basic" id="FMID_67318882FM"><div class="nodecontent">多关注电子工业/图灵/机械工业/人民邮电等出版社，他们有专业团队来保障每年输出优质书籍</div></li>
+    <li class="basic" id="FMID_1618336034FM"><div class="nodecontent">自己需要掌握鉴别好书的能力</div></li></ul></li>
+    <li class="col" id="FMID_1170708824FM"><div class="nodecontent">站点</div>
+        <ul class="subexp">
+    <li class="basic" id="FMID_1560529546FM"><div class="nodecontent"><a href="http://zhuanlan.zhihu.com/Weekly">知乎周刊：http://zhuanlan.zhihu.com/Weekly</a> <a href="http://zhuanlan.zhihu.com/Weekly"></a></div></li>
+    <li class="basic" id="FMID_1411509196FM"><div class="nodecontent"><a href="http://weekly.manong.io/">码农周刊：http://weekly.manong.io/</a> <a href="http://weekly.manong.io/"></a></div></li>
+    <li class="basic" id="FMID_952571271FM"><div class="nodecontent"><a href="http://pycoders.com/archive/">Pycoder's Weekly：http://pycoders.com/archive/</a> <a href="http://pycoders.com/archive/"></a></div></li>
+    <li class="basic" id="FMID_1524847256FM"><div class="nodecontent"><a href="https://news.ycombinator.com/">Hacker News：https://news.ycombinator.com/</a> <a href="https://news.ycombinator.com/"></a></div></li>
+    <li class="basic" id="FMID_563848945FM"><div class="nodecontent"><a href="http://news.dbanotes.net/">Startup News：http://news.dbanotes.net/</a> <a href="http://news.dbanotes.net/"></a></div></li>
+    <li class="basic" id="FMID_1455384354FM"><div class="nodecontent"><a href="http://toutiao.io/">开发者头条：http://toutiao.io/</a> <a href="http://toutiao.io/"></a></div></li>
+    <li class="basic" id="FMID_678498909FM"><div class="nodecontent"><a href="http://geek.csdn.net/">极客头条：http://geek.csdn.net/</a> <a href="http://geek.csdn.net/"></a></div></li>
+    <li class="basic" id="FMID_1264944187FM"><div class="nodecontent"><a href="http://www.infoq.com/cn">InfoQ：http://www.infoq.com/cn</a> <a href="http://www.infoq.com/cn"></a></div></li>
+    <li class="basic" id="FMID_254874317FM"><div class="nodecontent"><a href="http://stackoverflow.com/">Stack Overflow：http://stackoverflow.com/</a> <a href="http://stackoverflow.com/"></a></div></li>
+    <li class="basic" id="FMID_11264889FM"><div class="nodecontent"><a href="https://github.com/">GitHub：https://github.com/</a> <a href="https://github.com/"></a></div></li>
+    <li class="basic" id="FMID_1648180595FM"><div class="nodecontent"><a href="http://www.freebuf.com/">FreeBuf：http://www.freebuf.com/</a> <a href="http://www.freebuf.com/"></a></div></li>
+    <li class="basic" id="FMID_236031405FM"><div class="nodecontent"><a href="http://drops.wooyun.org/">WooYun：http://drops.wooyun.org/</a> <a href="http://drops.wooyun.org/"></a></div></li>
+    <li class="basic" id="FMID_592864568FM"><div class="nodecontent"><a href="http://bluereader.org/">深蓝阅读：http://bluereader.org/</a> <a href="http://bluereader.org/"></a></div></li></ul></li>
+    <li class="col" id="FMID_821959318FM"><div class="nodecontent">RSS订阅</div>
+        <ul class="subexp">
+    <li class="col" id="FMID_514594876FM"><div class="nodecontent">漏洞相关</div>
+        <ul class="subexp">
+    <li class="basic" id="FMID_1507091513FM"><div class="nodecontent"><a href="http://seebug.org/rss.xml ">http://seebug.org/rss.xml</a> <a href="http://seebug.org/rss.xml "></a></div></li>
+    <li class="basic" id="FMID_1039020164FM"><div class="nodecontent"><a href="https://www.exploit-db.com/rss.xml ">https://www.exploit-db.com/rss.xml</a> <a href="https://www.exploit-db.com/rss.xml "></a></div></li>
+    <li class="basic" id="FMID_1288792092FM"><div class="nodecontent"><a href="https://rss.packetstormsecurity.com ">https://rss.packetstormsecurity.com</a> <a href="https://rss.packetstormsecurity.com "></a></div></li>
+    <li class="basic" id="FMID_829431299FM"><div class="nodecontent"><a href="http://www.wooyun.org/feeds/public ">http://www.wooyun.org/feeds/public</a> <a href="http://www.wooyun.org/feeds/public "></a></div></li></ul></li>
+    <li class="col" id="FMID_1734259109FM"><div class="nodecontent">强烈推荐圈内人打造的深蓝阅读</div>
+        <ul class="subexp">
+    <li class="basic" id="FMID_224192456FM"><div class="nodecontent"><a href="http://bluereader.org/">http://bluereader.org/</a> <a href="http://bluereader.org/"></a></div></li>
+    <li class="basic" id="FMID_608037455FM"><div class="nodecontent">这上面已经很多黑客/技术类似的RSS资源了</div></li></ul></li></ul></li>
+    <li class="col" id="FMID_408679105FM"><div class="nodecontent">威胁情报</div>
+        <ul class="subexp">
+    <li class="basic" id="FMID_793394786FM"><div class="nodecontent">本来不想提任何这方面的，想想还是抖个资源，如下</div></li>
+    <li class="basic" id="FMID_1842355563FM"><div class="nodecontent"><a href="https://github.com/kbandla/APTnotes ">https://github.com/kbandla/APTnotes</a> <a href="https://github.com/kbandla/APTnotes "></a></div></li></ul></li>
+    <li class="col" id="FMID_575955218FM"><div class="nodecontent">安全平台</div>
+        <ul class="subexp">
+    <li class="col" id="FMID_1554574113FM"><div class="nodecontent">在线学习平台</div>
+        <ul class="subexp">
+    <li class="basic" id="FMID_1977776821FM"><div class="nodecontent"><a href="http://www.ichunqiu.com">i春秋：http://www.ichunqiu.com</a> <a href="http://www.ichunqiu.com"></a></div></li>
+    <li class="basic" id="FMID_626979305FM"><div class="nodecontent"><a href="https://pentesterlab.com">https://pentesterlab.com</a> <a href="https://pentesterlab.com"></a></div></li></ul></li>
+    <li class="col" id="FMID_972435194FM"><div class="nodecontent">PoC提交与学习</div>
+
+
+    <p style="text-align:right;">
+        —— <a href="http://blog.knownsec.com/Knownsec_RD_Checklist/index.html"> by @知道创宇(www.knownsec.com) @余弦 & 404团队 </a>
+    </p>
+
+</div>
+
+<!-- English Version -->
+<div class="en post-container">
+    <blockquote>
+        Designer or Engineer, things in between.
+    </blockquote>
+    <h3>Britain Votes For Brexit</h3>
+    <p>The U.K. has voted to leave the European Union by a 52 percent to 48 percent margin, the BBC and others predict.</p>
+
+    <p>—In a historic vote, the United Kingdom has voted to leave the European Union by a 52-percent-to-48-percent margin, according to forecasts from the BBC, ITV, and others.</p>
+
+    <p>—The stunning move raises major questions not only about how the U.K. will extricate itself from the 28-member bloc and the relationship it will have with it, but also about the future of British Prime Minister David Cameron’s government, of the country itself, and of the EU, post-World War II Europe's most ambitious political experiment.</p>
+
+    <p>—Polls were tight ahead of Thursday's referendum, but as the votes rolled in, the "leave" side performed better than expected in places it was supposed to win and triumphed in locations it was not. The "remain" side, despite the establishment's optimism, could never catch up.</p>
+
+    <p>—The pound slid to a 31-year low against the dollar on the news, and stock futures are sharply lower. Traders were expecting a bloodbath when European markets open.</p>
+
+    <p>—We live blogged the events as they happened, and you can read how it all unfolded below. All updates are in Eastern Standard Time (GMT -5).</p>
+
+
+
+    <p style="text-align:right;">
+    -- <a href="http://www.theatlantic.com/news/archive/2016/06/brexit-results/488561/">The Atlantic</a>
+    </p>
+
+</div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    function onLanChange(index){
+        if(index == 0){
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }else{
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        }
+    }
+    onLanChange(0);
+</script>
+
+
+
+
+<!-- 多说评论框 start -->
+<div class="comment">
+    <div class="ds-thread"
+    
+        data-thread-key="江南メ星/about"
+    
+
+    data-title="About"
+    data-url="http://EthanPen.github.io/about/"></div>
+</div>
+<!-- 多说评论框 end -->
+
+<!-- Duoshuo hacking -->
+<input id="dsUser" type="hidden" value="江南メ星"  />
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User hacking by Hux
+    var _user = document.getElementById('dsUser').value;
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+    		</div>
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-3 col-lg-offset-0
+                col-md-3 col-md-offset-0
+                col-sm-12
+                col-xs-12
+                sidebar-container
+            ">
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/EthanPen.github.io/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Short About -->
+                <section class="visible-md visible-lg">
+                    <hr><h5><a href="/EthanPen.github.io/about/">ABOUT ME</a></h5>
+                    <div class="short-about">
+                        
+                            <img src="/EthanPen.github.io/img/avatar-Ethan.jpg" />
+                        
+                        
+                            <p>江南メ星以前常说，多晒太阳吧！也许现在他只想说“给我一个机会，多学点东西...</p>
+                        
+
+                        <!-- Friends Blog -->
+                
+                <hr>
+                <h5>INTERESTING</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="#">CS</a></li>
+                    
+                        <li><a href="#">ENGLISH</a></li>
+                    
+                        <li><a href="#">PHOTOGRAPH</a></li>
+                    
+                </ul>
+                
+                        <!-- SNS Link -->
+                        <ul class="list-inline">
+                            
+                            
+                            
+                            
+                            <li>
+                                <a target="_blank" href="http://weibo.com/1692667524">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://www.facebook.com/ethan.pen.96">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                            
+                            <li>
+                                <a target="_blank" href="https://github.com/EthanPen">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </section>
+                <div class="short-about">
+                
+                    <img src="/EthanPen.github.io/img/WeChat_QRcode.jpg" />
+                
+                </div>
+    		</div>
+        
+	</div>
+</div>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, WeChat, Zhihu by Ethan.penx, add target = "_blank" to <a> by Hux -->
+                     
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/1692667524">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/ethan.pen.96">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/EthanPen">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ethan.Penx Blog 2016
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/EthanPen.github.io/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/EthanPen.github.io/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/EthanPen.github.io/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("http://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-79852829-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = '4cc1f2d8f3067386cc5cdb626a202900';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+</body>
+
+</html>

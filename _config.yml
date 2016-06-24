@@ -1,0 +1,95 @@
+# Site settings
+title: Ethan.Penx Blog
+header-img: img/home-bg.jpg
+email: Ethan.penx@gmail.com
+description: "坐观垂钓者,徒有羡鱼情."
+keyword: ""
+url: "http://EthanPen.github.io"              # your host, for absolute URL
+baseurl: "/EthanPen.github.io"         # for example, '/blog' if your blog hosted on 'host/blog'
+
+
+
+# SNS settings
+RSS: false
+weibo_username:     1692667524
+#zhihu_username:     jiang-nan-xing-18
+github_username:    EthanPen
+#twitter_username:  Ethan
+facebook_username:  ethan.pen.96
+
+
+
+# Build settings
+# from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
+highlighter: rouge
+permalink: pretty
+paginate: 8
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+anchorjs: true                          # if you want to customize anchor. check out line:181 of `post.html`
+
+
+
+# Gems
+# from PR#40, to support local preview for Jekyll 3.0
+gems: [jekyll-paginate]
+
+
+
+# Markdown settings
+# replace redcarpet to kramdown,
+# although redcarpet can auto highlight code, the lack of header-id make the catalog impossible, so I switch to kramdown
+# document: http://jekyllrb.com/docs/configuration/#kramdown
+markdown: kramdown
+kramdown:
+  input: GFM                            # use Github Flavored Markdown !important
+
+
+
+#Disqus settings
+#disqus_username: EthanPenx
+
+# Duoshuo settings
+duoshuo_username: 江南メ星
+# Share component is depend on Comment so we can NOT use share only.
+duoshuo_share: true                     # set to false if you want to use Comment without Sharing
+
+
+
+
+# Analytics settings
+# Baidu Analytics
+ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
+# Google Analytics
+ga_track_id: 'UA-79852829-1'            # Format: UA-xxxxxx-xx
+ga_domain: auto
+
+
+
+# Sidebar settings
+sidebar: true                           # whether or not using Sidebar.
+sidebar-about-description: "江南メ星以前常说，多晒太阳吧！也许现在他只想说“给我一个机会，多学点东西..."
+sidebar-avatar: /img/avatar-Ethan.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-WeChat: /img/WeChat_QRcode.jpg
+
+
+
+
+# Featured Tags
+featured-tags: true                     # whether or not using Feature-Tags
+featured-condition-size: 1              # A tag will be featured if the size of it is more than this condition value
+
+
+
+# Friends
+friends: [
+   {
+        title: "CS",
+        href: "#"
+    },{
+        title: "ENGLISH",
+        href: "#"
+    },{
+        title: "PHOTOGRAPH",
+        href: "#"
+    }
+]
