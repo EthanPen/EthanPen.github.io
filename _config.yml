@@ -5,7 +5,7 @@ email: Ethan.penx@gmail.com
 description: "坐观垂钓者,徒有羡鱼情."
 keyword: ""
 url: "http://EthanPen.github.io"              # your host, for absolute URL
-baseurl: "/EthanPen.github.io"         # for example, '/blog' if your blog hosted on 'host/blog'
+baseurl: ""         # for example, '/blog' if your blog hosted on 'host/blog'
 
 
 
@@ -46,10 +46,10 @@ kramdown:
 
 
 #Disqus settings
-#disqus_username: EthanPenx
+#disqus_username: Ethan.Penx
 
 # Duoshuo settings
-duoshuo_username: 江南メ星
+duoshuo_username: EthanPenx
 # Share component is depend on Comment so we can NOT use share only.
 duoshuo_share: true                     # set to false if you want to use Comment without Sharing
 
@@ -58,7 +58,7 @@ duoshuo_share: true                     # set to false if you want to use Commen
 
 # Analytics settings
 # Baidu Analytics
-ba_track_id: 4cc1f2d8f3067386cc5cdb626a202900
+ba_track_id: f3ecddde90c2a58139e08a12aa20af0f
 # Google Analytics
 ga_track_id: 'UA-79852829-1'            # Format: UA-xxxxxx-xx
 ga_domain: auto
