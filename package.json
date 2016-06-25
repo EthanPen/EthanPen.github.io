@@ -3,7 +3,7 @@
     "title": "Ethan Blog",
     "version": "1.0.0",
     "homepage": "http://EthanPen.github.io",
-    "author": "Ethan.Penx",
+    "author": "Ethan",
     "devDependencies": {
         "grunt": "~0.4.5",
         "grunt-contrib-less": "~0.11.4",

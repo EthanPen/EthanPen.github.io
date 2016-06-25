@@ -4,7 +4,7 @@ title:      "Hello Blog"
 subtitle:   " \"Hello World, Hello Summer Solstice!\""
 date:       2016-06-21
 author:     "Ethan"
-header-img: "img/Hello-Blog.jpg"
+header-img: "/img/Hello-Blog.jpg"
 tags:
     - Life
 ---
