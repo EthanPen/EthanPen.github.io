@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title></title>
+    <title>Mixed Content - </title>
 
-    <link rel="canonical" href="http://EthanPen.github.io/404.html">
+    <link rel="canonical" href="http://EthanPen.github.io/2016/06/25/Mixed-Content/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -123,23 +123,211 @@
 </script>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/404-bg.jpg')">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-				<div class="site-heading" id="tag-heading">
-					<h1>404</h1>
-					<span class="subheading">么有，啥都么有 :(</span>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/Hello-Blog.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/Hello-Blog.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Life" title="Life">Life</a>
+                        
+                        <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                        
+                    </div>
+                    <h1>Mixed Content</h1>
+                    
+                    
+                    <h2 class="subheading"> The content got mixed? </h2>
+                    
+                    <span class="meta">Posted by Ethan on June 25, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 
-<script>
-	document.body.classList.add('page-fullscreen');
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+  <p>如果一整天下来你都不是很开心，那么今天一定不是个好日子！</p>
+</blockquote>
+
+<p>之前的在本地通过 jekyll serve 测试好的博客项目上传到Github之后，出现了我将要吐槽的问题: <strong>Mixed Content</strong>.</p>
+
+<p>So, <a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">what’s the Mixed Content?</a></p>
+
+<blockquote>
+  <p>A: When a user visits a page served over HTTPS, their connection with the web  server is encrypted with TLS and is therefore safeguarded from sniffers and  man-in-the-middle attacks. If the HTTPS page includes content retrieved through regular, cleartext HTTP, then the connection is only partially      encrypted; the unencrypted content is accessible to sniffers and can be     modified by man-in-the-middle attackers, so the connection is not           safeguarded. When a web page exhibits this behavior, it is called a mixed   content page.</p>
+</blockquote>
+
+<p>是的，这个所谓的Mixed Content还分为两种</p>
+
+<ul>
+  <li>Mixed passive/display content</li>
+  <li>Mixed active content</li>
+</ul>
+
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/06/21/Hello-Blog/" data-toggle="tooltip" data-placement="top" title="Hello Blog">
+                        Previous<br>
+                        <span>Hello Blog</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2016/06/25/Mixed-Content"
+                        data-title="Mixed Content"
+                        data-url="http://EthanPen.github.io/2016/06/25/Mixed-Content/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                                <a href="/tags/#Life" title="Life" rel="2">
+                                    Life
+                                </a>
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>INTERESTING</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="#">CS</a></li>
+                    
+                        <li><a href="#">ENGLISH</a></li>
+                    
+                        <li><a href="#">PHOTOGRAPH</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'EthanPen';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
 </script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
 
     <!-- Footer -->
