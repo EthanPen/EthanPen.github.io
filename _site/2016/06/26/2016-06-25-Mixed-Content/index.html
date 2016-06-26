@@ -1,0 +1,28 @@
+<blockquote>
+  <p>如果一整天下来你都不是很开心，那么今天一定不是个好日子！</p>
+</blockquote>
+
+<p>##Mixed Content 1: mixed content</p>
+
+<p>之前的在本地通过 jekyll serve 测试好的博客项目上传到Github之后，出现了我将要吐槽的问题: <strong>Mixed Content</strong>.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">So, what’s the Mixed Content?</a></p>
+
+<blockquote>
+  <p>A: When a user visits a page served over HTTPS, their connection with the web  server is encrypted with TLS and is therefore safeguarded from sniffers and  man-in-the-middle attacks. If the HTTPS page includes content retrieved through regular, cleartext HTTP, then the connection is only partially      encrypted; the unencrypted content is accessible to sniffers and can be     modified by man-in-the-middle attackers, so the connection is not           safeguarded. When a web page exhibits this behavior, it is called a mixed   content page.</p>
+</blockquote>
+
+<p>是的，这个Mixed Content分为两种</p>
+
+<ul>
+  <li>Mixed passive/display content</li>
+  <li>Mixed active content</li>
+</ul>
+
+<p>solving过程中碰到的Failed to load resource的页面<a href="http://stackoverflow.com/questions/23688565/failed-to-load-resource-neterr-insecure-response">ERR_INSECURE_RESPONSE</a></p>
+
+<p>因为index.html页面需要获取到某种字体的方式为http，而Github pages又是https服务的，所以chrome锁定了获取字体的页面请求，试过将http指定为https方式不行，试过New tab来获取字体所在网站证书貌似还是不行，虽然可以在获取index.html页面地址栏点开小卫士图标来确认加载未经验证的内容（也就是要get的css以及font咯），但不能每次都这样访问吧，且其他访问者都不会注意到这个内容吧，而且手机端chrome访问都没有小卫士可以点啊。后来到深夜，实在困的不行就更改了原script获取的link，事先将css以及font下载好放置在项目结构中，这样就不用跳出去其他网站来获取这几个相应的resource了。底部的Weibo, Facebook, and Github分享框也就出现了，如下图。
+<img class="shadow" src="/img/inPost/MixedContent-homefooterpage.png" width="260" /></p>
+
+<p>###Mixed Content 2: Auto login</p>
+

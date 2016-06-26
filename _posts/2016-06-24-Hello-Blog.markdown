@@ -9,7 +9,7 @@ tags:
     - Life
 ---
 
-“Life got real, moving on. ”
+“ Life got real, moving on. ”
 
 
 ## 正文
