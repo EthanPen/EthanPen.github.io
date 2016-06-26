@@ -5,9 +5,109 @@
     <description>坐观垂钓者,徒有羡鱼情.</description>
     <link>http://EthanPen.github.io/</link>
     <atom:link href="http://EthanPen.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 26 Jun 2016 11:41:12 +0800</pubDate>
-    <lastBuildDate>Sun, 26 Jun 2016 11:41:12 +0800</lastBuildDate>
+    <pubDate>Sun, 26 Jun 2016 21:27:17 +0800</pubDate>
+    <lastBuildDate>Sun, 26 Jun 2016 21:27:17 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>Python Challenge</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://www.pythonchallenge.com/&quot;&gt;PythonChallenge&lt;/a&gt;&lt;br /&gt;
+To read the pre-Level of PythonChallenge at this site: &lt;a href=&quot;http://jnstar.iteye.com/admin/blogs/2214796&quot;&gt;Ethan.Penx Blog in ITeye&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;level-7&quot;&gt;Level 7&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Riddle Page L7:&lt;/strong&gt; &lt;a href=&quot;http://www.pythonchallenge.com/pc/def/oxygen.html&quot;&gt;http://www.pythonchallenge.com/pc/def/oxygen.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The title of the page is “smarty”, and there’s a picture which with a strip of greyscale squares across the middle is in the top of the page. At the sight of the clue “smarty”, what coming to my mind is the &lt;strong&gt;Python Module&lt;/strong&gt; named &lt;strong&gt;Smartypants&lt;/strong&gt;, but, sadly, there’s nothing I can get through the &lt;strong&gt;smartypants.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Mabye the clue is in those greyscale squares, with the greyscale level (range from 0-255) encoding something in it, whatever, try it first.&lt;/p&gt;
+
+&lt;p&gt;Downloaded the picture(named it ‘&lt;strong&gt;oxygen.png&lt;/strong&gt;’).&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; import Image
+&amp;gt;&amp;gt;&amp;gt; im = Image.open(&quot;/Users/xing/Desktop/oxygen.png&quot;)
+&amp;gt;&amp;gt;&amp;gt; width, height = im.size
+&amp;gt;&amp;gt;&amp;gt; im.getpixel((0, h//2))
+(115, 115, 115, 255)
+&amp;gt;&amp;gt;&amp;gt; print chr(115), chr(255)
+s ?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Well, that make sense. Let’s guess that each block is 4 pixel wider:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; smarty = [chr(im.getpixel((i, h//2))[0]) for i in range(0, width, 4)]
+&amp;gt;&amp;gt;&amp;gt; &#39;&#39;.join(smarty)
+&#39;ssmaarrtt gguuyy,  yyoou  mmaadee  iit..  tthee  nnexxtt  leevveel  iiss [[11005,,  11100,,  11166,, 110011,  11003,,  11144,,  10055,, 111166,  11221]]rbecbc&#39;
+&amp;gt;&amp;gt;&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Obviously, I choose the wrong pixel width, try it a few of times.&lt;/p&gt;
+
+&lt;p&gt;Turns out, the colour changes every 7 pixels.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; print &#39;&#39;.join([chr(im.getpixel((i, h//2))[0]) for i in range(0, width, 7)])
+smart guy, you made it. the next level is [105, 110, 116, 101, 103, 114, 105, 116, 121]pe_
+&amp;gt;&amp;gt;&amp;gt; print &#39;&#39;.join(map(chr, [105, 110, 116, 101, 103, 114, 105, 116, 121]))
+integrity
+&amp;gt;&amp;gt;&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So, change the &lt;strong&gt;url&lt;/strong&gt; (&lt;strong&gt;oxygen –&amp;gt; integrity&lt;/strong&gt;) to getting Level 8:
+&lt;strong&gt;Riddle Page L8:&lt;/strong&gt; &lt;a href=&quot;http://www.pythonchallenge.com/pc/def/integrity.html&quot;&gt;http://www.pythonchallenge.com/pc/def/integrity.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;relative&quot;&gt;Relative&lt;/h4&gt;
+
+&lt;p&gt;There’s something to help understanding all the Image stuff as following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://pillow.readthedocs.io/en/3.2.x/reference/Image.html&quot;&gt;PIL - Image Module&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/3823752/display-image-as-grayscale-using-matplotlib&quot;&gt;Display image as grayscale using matplotlib&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/11064786/get-pixels-rgb-using-pil&quot;&gt;Get pixel’s RGB using PIL&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;functions&quot;&gt;functions:&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Image.getpixel(xy):&lt;/strong&gt;&lt;br /&gt;
+&amp;gt;	Returns the pixel value at a given position.&lt;br /&gt;
+Parameters:	xy – The coordinate, given as (x, y).&lt;br /&gt;
+Returns:	The pixel value. If the image is a multi-layer image, this method returns a tuple.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;map(function, sequence[, sequence, …]) -&amp;gt; list&lt;/strong&gt; &lt;br /&gt;
+&amp;gt; 	Return a list of the results of applying the function to the items of
+  the argument sequence(s).  If more than one sequence is given, the
+  function is called with an argument list consisting of the corresponding
+  item of each sequence, substituting None for missing values when not all
+  sequences have the same length.  If the function is None, return a list of the items of the sequence (or a list of tuples if more than one sequence).&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;– Continuing&lt;/strong&gt;&lt;/p&gt;
+
+</description>
+        <pubDate>Sat, 25 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://EthanPen.github.io/2016/06/25/Python-Challenge/</link>
+        <guid isPermaLink="true">http://EthanPen.github.io/2016/06/25/Python-Challenge/</guid>
+        
+        <category>Python</category>
+        
+        <category>PythonChallenge</category>
+        
+        
+      </item>
     
       <item>
         <title>Mixed Content</title>
@@ -99,9 +199,9 @@ Mac上创建后缀为.command的文件，输入内容 &lt;strong&gt;ssh user@ser
 &lt;img class=&quot;shadow&quot; src=&quot;/img/inPost/MixedContent-AutoLogin.png&quot; width=&quot;460&quot; /&gt;&lt;/p&gt;
 
 </description>
-        <pubDate>Sat, 25 Jun 2016 00:00:00 +0800</pubDate>
-        <link>http://EthanPen.github.io/2016/06/25/Mixed-Content/</link>
-        <guid isPermaLink="true">http://EthanPen.github.io/2016/06/25/Mixed-Content/</guid>
+        <pubDate>Thu, 23 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://EthanPen.github.io/2016/06/23/Mixed-Content/</link>
+        <guid isPermaLink="true">http://EthanPen.github.io/2016/06/23/Mixed-Content/</guid>
         
         <category>前端</category>
         
@@ -154,6 +254,8 @@ Mac上创建后缀为.command的文件，输入内容 &lt;strong&gt;ssh user@ser
         <guid isPermaLink="true">http://EthanPen.github.io/2016/06/21/Hello-Blog/</guid>
         
         <category>Life</category>
+        
+        <category>Github</category>
         
         
       </item>

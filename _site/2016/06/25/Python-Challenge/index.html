@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title></title>
+    <title>Python Challenge - </title>
 
-    <link rel="canonical" href="http://EthanPen.github.io/">
+    <link rel="canonical" href="http://EthanPen.github.io/2016/06/25/Python-Challenge/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -123,137 +123,181 @@
 </script>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/inPost/PythonChallenge.png" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/inPost/PythonChallenge.png')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Ethan.Penx Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">给我一个机会, 我想做好人...</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                        
+                        <a class="tag" href="/tags/#PythonChallenge" title="PythonChallenge">PythonChallenge</a>
+                        
+                    </div>
+                    <h1>Python Challenge</h1>
+                    
+                    
+                    <h2 class="subheading">" The first programming riddle on the net " </h2>
+                    
+                    <span class="meta">Posted by Ethan on June 25, 2016</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-<!-- USE SIDEBAR -->
-    <!-- PostList Container -->
+    <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                postlist-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <blockquote>
+  <p><a href="http://www.pythonchallenge.com/">PythonChallenge</a><br />
+To read the pre-Level of PythonChallenge at this site: <a href="http://jnstar.iteye.com/admin/blogs/2214796">Ethan.Penx Blog in ITeye</a></p>
+</blockquote>
+
+<h2 id="level-7">Level 7</h2>
+
+<p><strong>Riddle Page L7:</strong> <a href="http://www.pythonchallenge.com/pc/def/oxygen.html">http://www.pythonchallenge.com/pc/def/oxygen.html</a></p>
+
+<p>The title of the page is “smarty”, and there’s a picture which with a strip of greyscale squares across the middle is in the top of the page. At the sight of the clue “smarty”, what coming to my mind is the <strong>Python Module</strong> named <strong>Smartypants</strong>, but, sadly, there’s nothing I can get through the <strong>smartypants.</strong></p>
+
+<p>Mabye the clue is in those greyscale squares, with the greyscale level (range from 0-255) encoding something in it, whatever, try it first.</p>
+
+<p>Downloaded the picture(named it ‘<strong>oxygen.png</strong>’).</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; import Image
+&gt;&gt;&gt; im = Image.open("/Users/xing/Desktop/oxygen.png")
+&gt;&gt;&gt; width, height = im.size
+&gt;&gt;&gt; im.getpixel((0, h//2))
+(115, 115, 115, 255)
+&gt;&gt;&gt; print chr(115), chr(255)
+s ?
+</code></pre>
+</div>
+
+<p>Well, that make sense. Let’s guess that each block is 4 pixel wider:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; smarty = [chr(im.getpixel((i, h//2))[0]) for i in range(0, width, 4)]
+&gt;&gt;&gt; ''.join(smarty)
+'ssmaarrtt gguuyy,  yyoou  mmaadee  iit..  tthee  nnexxtt  leevveel  iiss [[11005,,  11100,,  11166,, 110011,  11003,,  11144,,  10055,, 111166,  11221]]rbecbc'
+&gt;&gt;&gt; 
+</code></pre>
+</div>
+
+<p>Obviously, I choose the wrong pixel width, try it a few of times.</p>
+
+<p>Turns out, the colour changes every 7 pixels.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; print ''.join([chr(im.getpixel((i, h//2))[0]) for i in range(0, width, 7)])
+smart guy, you made it. the next level is [105, 110, 116, 101, 103, 114, 105, 116, 121]pe_
+&gt;&gt;&gt; print ''.join(map(chr, [105, 110, 116, 101, 103, 114, 105, 116, 121]))
+integrity
+&gt;&gt;&gt; 
+</code></pre>
+</div>
+
+<p>So, change the <strong>url</strong> (<strong>oxygen –&gt; integrity</strong>) to getting Level 8:
+<strong>Riddle Page L8:</strong> <a href="http://www.pythonchallenge.com/pc/def/integrity.html">http://www.pythonchallenge.com/pc/def/integrity.html</a></p>
+
+<h4 id="relative">Relative</h4>
+
+<p>There’s something to help understanding all the Image stuff as following:</p>
+
+<ul>
+  <li>
+    <p><a href="http://pillow.readthedocs.io/en/3.2.x/reference/Image.html">PIL - Image Module</a></p>
+  </li>
+  <li>
+    <p><a href="http://stackoverflow.com/questions/3823752/display-image-as-grayscale-using-matplotlib">Display image as grayscale using matplotlib</a></p>
+  </li>
+  <li>
+    <p><a href="http://stackoverflow.com/questions/11064786/get-pixels-rgb-using-pil">Get pixel’s RGB using PIL</a></p>
+  </li>
+</ul>
+
+<h5 id="functions">functions:</h5>
+
+<ul>
+  <li>
+    <p><strong>Image.getpixel(xy):</strong><br />
+&gt;	Returns the pixel value at a given position.<br />
+Parameters:	xy – The coordinate, given as (x, y).<br />
+Returns:	The pixel value. If the image is a multi-layer image, this method returns a tuple.</p>
+  </li>
+  <li>
+    <p><strong>map(function, sequence[, sequence, …]) -&gt; list</strong> <br />
+&gt; 	Return a list of the results of applying the function to the items of
+  the argument sequence(s).  If more than one sequence is given, the
+  function is called with an argument list consisting of the corresponding
+  item of each sequence, substituting None for missing values when not all
+  sequences have the same length.  If the function is None, return a list of the items of the sequence (or a list of tuples if more than one sequence).</p>
+  </li>
+</ul>
+
+<p><strong>– Continuing</strong></p>
+
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/06/23/Mixed-Content/" data-toggle="tooltip" data-placement="top" title="Mixed Content">
+                        Previous<br>
+                        <span>Mixed Content</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+
+
                 
-<div class="post-preview">
-    <a href="/2016/06/25/Python-Challenge/">
-        <h2 class="post-title">
-            Python Challenge
-        </h2>
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2016/06/25/Python-Challenge"
+                        data-title="Python Challenge"
+                        data-url="http://EthanPen.github.io/2016/06/25/Python-Challenge/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>  
+
+    <!-- Side Catalog Container -->
         
-        <h3 class="post-subtitle">
-            " The first programming riddle on the net " 
-        </h3>
-        
-        <div class="post-content-preview">
-            
-  PythonChallenge
-To read the pre-Level of PythonChallenge at this site: Ethan.Penx Blog in ITeye
 
-
-Level 7
-
-Riddle Page L7: http://www.pythonchallenge.com/pc/def/oxygen.html
-
-The title of the pag...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ethan on June 25, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/06/23/Mixed-Content/">
-        <h2 class="post-title">
-            Mixed Content
-        </h2>
-        
-        <h3 class="post-subtitle">
-            " The content got mixed? yup, Auto login and the mixed-content " 
-        </h3>
-        
-        <div class="post-content-preview">
-            “ 如果一整天下来你都不是很开心，那么今天一定不是个好日子！”
-
-Mixed Content 1: mixed-content
-
-之前的在本地通过 jekyll serve 测试好的博客项目上传到Github之后，碰到了问题: Mixed Content.
-
-So, what’s the Mixed Content?
-
-
-  A: When a user visits a page serv...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ethan on June 23, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/06/21/Hello-Blog/">
-        <h2 class="post-title">
-            Hello Blog
-        </h2>
-        
-        <h3 class="post-subtitle">
-             "Hello World, Hello Summer Solstice!"
-        </h3>
-        
-        <div class="post-content-preview">
-            “ Life got real, moving on. ”
-
-正文
-
-Ethan 的 Blog 应是落地于此了。
-
-这一学期不出几日便要结束了，江南メ星也总算是更换了个瞎写东西的地方。
-
-先前的博文挂放在iTeye平台上，想想有些地方应该是不酷的。譬如，私人定制性不强，不酷；不太习惯地富文本编辑器，不酷。。。总而言之，就是不酷吧！
-
-一件事不够酷，去做的积极性就不会高。之前生活中碰到的需要去...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ethan on June 21, 2016
-    </p>
-</div>
-<hr>
-
-
-<!-- Pager -->
-
-
-            </div>
     <!-- Sidebar Container -->
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
@@ -279,55 +323,6 @@ Ethan 的 Blog 应是落地于此了。
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <img src="/img/avatar-Ethan.jpg" />
-                        
-                        
-                            <p>江南メ星以前常说，多晒太阳吧！也许现在他只想说“给我一个机会，多学点东西...</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="http://weibo.com/1692667524">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://www.facebook.com/ethan.pen.96">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/EthanPen">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                        </ul>
-                    </div>
-                </section>
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -342,15 +337,70 @@ Ethan 的 Blog 应是落地于此了。
                     
                 </ul>
                 
-                <div class="short-about">
-                
-                    <img src="/img/WeChat_QRcode.jpg" />
-                
-                </div>
             </div>
-        
+        </div>
     </div>
-</div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'EthanPen';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
 
     <!-- Footer -->

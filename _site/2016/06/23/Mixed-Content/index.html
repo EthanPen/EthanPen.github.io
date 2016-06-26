@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title></title>
+    <title>Mixed Content - </title>
 
-    <link rel="canonical" href="http://EthanPen.github.io/">
+    <link rel="canonical" href="http://EthanPen.github.io/2016/06/23/Mixed-Content/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -123,137 +123,191 @@
 </script>
 
 
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/inPost/MixedContent.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/inPost/MixedContent.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Ethan.Penx Blog</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">给我一个机会, 我想做好人...</span>
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#前端" title="前端">前端</a>
+                        
+                        <a class="tag" href="/tags/#Mac" title="Mac">Mac</a>
+                        
+                        <a class="tag" href="/tags/#Linux" title="Linux">Linux</a>
+                        
+                    </div>
+                    <h1>Mixed Content</h1>
+                    
+                    
+                    <h2 class="subheading">" The content got mixed? yup, Auto login and the mixed-content " </h2>
+                    
+                    <span class="meta">Posted by Ethan on June 23, 2016</span>
                 </div>
             </div>
         </div>
     </div>
 </header>
 
-<!-- Main Content -->
-<div class="container">
-    <div class="row">
-        
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
 
-<!-- USE SIDEBAR -->
-    <!-- PostList Container -->
+    <!-- Post Container -->
             <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                postlist-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <p>“ 如果一整天下来你都不是很开心，那么今天一定不是个好日子！”</p>
+
+<h2 id="mixed-content-1-mixed-content">Mixed Content 1: mixed-content</h2>
+
+<p>之前的在本地通过 jekyll serve 测试好的博客项目上传到Github之后，碰到了问题: <strong>Mixed Content</strong>.</p>
+
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">So, what’s the Mixed Content?</a></p>
+
+<blockquote>
+  <p>A: When a user visits a page served over HTTPS, their connection with the web  server is encrypted with TLS and is therefore safeguarded from sniffers and  man-in-the-middle attacks. If the HTTPS page includes content retrieved through regular, cleartext HTTP, then the connection is only partially      encrypted; the unencrypted content is accessible to sniffers and can be     modified by man-in-the-middle attackers, so the connection is not           safeguarded. When a web page exhibits this behavior, it is called a mixed   content page.</p>
+</blockquote>
+
+<p>是的，这个Mixed Content分为两种</p>
+
+<ul>
+  <li>Mixed passive/display content</li>
+  <li>Mixed active content</li>
+</ul>
+
+<p>solving过程中碰到的Failed to load resource的页面<a href="http://stackoverflow.com/questions/23688565/failed-to-load-resource-neterr-insecure-response">ERR_INSECURE_RESPONSE</a></p>
+
+<p>因为index.html页面需要获取到某种字体的方式为http，而Github pages又是https服务的，所以chrome锁定了获取字体的页面请求，试过将http指定为https方式不行，试过New tab来获取字体所在网站证书貌似还是不行，虽然可以在获取index.html页面地址栏点开小卫士图标来确认加载未经验证的内容（也就是要get的css以及font咯），但不能每次都这样访问吧，且其他访问者都不会注意到这个内容吧，而且手机端chrome访问都没有小卫士可以点啊。后来到深夜，实在困的不行就更改了原script获取的link，事先将css以及font下载好放置在项目结构中，这样就不用跳出去其他网站来获取这几个相应的resource了。拿自己的Nexus5试了下，底部的Weibo, Facebook, and Github分享框算是能出现了。
+<img class="shadow" src="/img/inPost/MixedContent-homefooterpage.png" width="260" /></p>
+
+<h2 id="mixed-content-2-passwordless-auto-login-on-macos">Mixed Content 2: Passwordless Auto login on MacOS</h2>
+
+<p><strong>前因:</strong> 在阿里云服务平台上购买了服务器，每次SSH登录都要认证感觉不爽。<br />
+<strong>后果:</strong> 不改变Mac上使用 <strong>Terminal.app</strong> 的习惯，实现点击自动登录服务器。</p>
+
+<p>之前使用Mac自带Terminal.app的体验很好，主要是很喜欢terminal.app提供的Theme: pro，然后ta也提供了ssh功能。使用SecureCRT等软件，需要打开软件，然后找到相应主机再打开，再输入密码，这，太不纯粹。</p>
+
+<p>Google了一圈，感觉并么有多少够纯粹的方式，Solving过程中自己了解到相关的东西，用比较简单的方式搞定,分为两步：</p>
+
+<ul>
+  <li>Login <strong>Passwordless</strong></li>
+  <li><strong>Auto</strong> Login</li>
+</ul>
+
+<h4 id="passwordless-login">Passwordless Login</h4>
+
+<p><a href="https://coolestguidesontheplanet.com/make-passwordless-ssh-connection-osx-10-9-mavericks-linux/">Make a passwordless SSH Connection between MacOS and Linux Server</a></p>
+
+<p>这一步需要做的就是在本地生成一份公钥和私钥，然后将<strong>公钥</strong>添加到服务器的认证列表中来实现会话中的Passwordless</p>
+
+<h5 id="section">本地公私密钥生成</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code># 在～目录下创建并更换其权限
+~$ mkdir .ssh 
+~$ chmod go-rwx .ssh
+
+＃生成公钥和私钥，命令中最后的双引号没有给出私钥的密码，所以才实现Passwordless访问
+.ssh$ ssh-keygen -b 1024 -t rsa -f id_rsa -P ""  
+</code></pre>
+</div>
+
+<p>执行完操作后本地端会生成 <strong>id_rsa</strong> 以及 <strong>id_rsa.pub</strong>。</p>
+
+<h5 id="section-1">远端公钥分享</h5>
+<p>将本地端生成 <strong>id_rsa.pub</strong>的内容，拷贝到远端。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#远端创建
+.ssh$ touch authorized_keys
+#本地内容拷贝
+.ssh$ cat id_rsa.pub
+ssh-rsa  AAAAB3NzaC1yc2EAAAABIwAAAIEA2CtcmYRmQJX04pZnrTPrU68BZMk9YlbI6CUcFUp
+RVw29p V7mxW16wd/q9z7n+xytqdp4wsAc/7+24ZVikMhhRetEGr3LSBz5gm9980oTPEy61+pDP2y
+jafShe5xcszIUnQ rN1ohCuF7Y/a/TG6G6gaJGcLexUiwfTRtCAbpuzfU= username@yourcomputer.local
+</code></pre>
+</div>
+
+<p>使用<strong>Vim</strong>编辑器将文件内容拷贝好后更改权限。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>.ssh$ chmod u-w authorized_keys
+</code></pre>
+</div>
+
+<p>到此步之后再去SSH服务器可以实现Passwordless访问了。</p>
+
+<h4 id="auto-login">Auto Login</h4>
+
+<p>这一步需要做的就是将输入 <strong>ssh serverdomain</strong> 的操作化成点击操作了。
+Mac上创建后缀为.command的文件，输入内容 <strong>ssh user@serverdomainname</strong>，将其放置在Dock栏中。
+<img class="shadow" src="/img/inPost/MixedContent-AutoLoginFile.png" width="260" />
+其中的user字符以及serverdomainname字符需要更换成相应项。 一般情况下是 ssh root@yourServerIP 了。
+至此Passwordless Auto Login on Mac 就完事儿了。
+<img class="shadow" src="/img/inPost/MixedContent-AutoLogin.png" width="460" /></p>
+
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/06/21/Hello-Blog/" data-toggle="tooltip" data-placement="top" title="Hello Blog">
+                        Previous<br>
+                        <span>Hello Blog</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/06/25/Python-Challenge/" data-toggle="tooltip" data-placement="top" title="Python Challenge">
+                        Next<br>
+                        <span>Python Challenge</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
                 
-<div class="post-preview">
-    <a href="/2016/06/25/Python-Challenge/">
-        <h2 class="post-title">
-            Python Challenge
-        </h2>
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2016/06/23/Mixed-Content"
+                        data-title="Mixed Content"
+                        data-url="http://EthanPen.github.io/2016/06/23/Mixed-Content/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>  
+
+    <!-- Side Catalog Container -->
         
-        <h3 class="post-subtitle">
-            " The first programming riddle on the net " 
-        </h3>
-        
-        <div class="post-content-preview">
-            
-  PythonChallenge
-To read the pre-Level of PythonChallenge at this site: Ethan.Penx Blog in ITeye
 
-
-Level 7
-
-Riddle Page L7: http://www.pythonchallenge.com/pc/def/oxygen.html
-
-The title of the pag...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ethan on June 25, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/06/23/Mixed-Content/">
-        <h2 class="post-title">
-            Mixed Content
-        </h2>
-        
-        <h3 class="post-subtitle">
-            " The content got mixed? yup, Auto login and the mixed-content " 
-        </h3>
-        
-        <div class="post-content-preview">
-            “ 如果一整天下来你都不是很开心，那么今天一定不是个好日子！”
-
-Mixed Content 1: mixed-content
-
-之前的在本地通过 jekyll serve 测试好的博客项目上传到Github之后，碰到了问题: Mixed Content.
-
-So, what’s the Mixed Content?
-
-
-  A: When a user visits a page serv...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ethan on June 23, 2016
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2016/06/21/Hello-Blog/">
-        <h2 class="post-title">
-            Hello Blog
-        </h2>
-        
-        <h3 class="post-subtitle">
-             "Hello World, Hello Summer Solstice!"
-        </h3>
-        
-        <div class="post-content-preview">
-            “ Life got real, moving on. ”
-
-正文
-
-Ethan 的 Blog 应是落地于此了。
-
-这一学期不出几日便要结束了，江南メ星也总算是更换了个瞎写东西的地方。
-
-先前的博文挂放在iTeye平台上，想想有些地方应该是不酷的。譬如，私人定制性不强，不酷；不太习惯地富文本编辑器，不酷。。。总而言之，就是不酷吧！
-
-一件事不够酷，去做的积极性就不会高。之前生活中碰到的需要去...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by Ethan on June 21, 2016
-    </p>
-</div>
-<hr>
-
-
-<!-- Pager -->
-
-
-            </div>
     <!-- Sidebar Container -->
             <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
                 <!-- Featured Tags -->
                 
                 <section>
@@ -279,55 +333,6 @@ Ethan 的 Blog 应是落地于此了。
                 </section>
                 
 
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
-                        
-                            <img src="/img/avatar-Ethan.jpg" />
-                        
-                        
-                            <p>江南メ星以前常说，多晒太阳吧！也许现在他只想说“给我一个机会，多学点东西...</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="http://weibo.com/1692667524">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://www.facebook.com/ethan.pen.96">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/EthanPen">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                        </ul>
-                    </div>
-                </section>
                 <!-- Friends Blog -->
                 
                 <hr>
@@ -342,15 +347,70 @@ Ethan 的 Blog 应是落地于此了。
                     
                 </ul>
                 
-                <div class="short-about">
-                
-                    <img src="/img/WeChat_QRcode.jpg" />
-                
-                </div>
             </div>
-        
+        </div>
     </div>
-</div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'EthanPen';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
 
 
     <!-- Footer -->

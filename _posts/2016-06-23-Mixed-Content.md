@@ -2,7 +2,7 @@
 layout:     post
 title:      "Mixed Content"
 subtitle:   "\" The content got mixed? yup, Auto login and the mixed-content \" "
-date:       2016-06-25
+date:       2016-06-23
 author:     "Ethan"
 header-img: "img/inPost/MixedContent.jpg"
 tags:

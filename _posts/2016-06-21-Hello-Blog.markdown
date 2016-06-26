@@ -7,6 +7,7 @@ author:     "Ethan"
 header-img: "img/Hello-Blog.jpg"
 tags:
     - Life
+    - Github
 ---
 
 “ Life got real, moving on. ”
