@@ -14,11 +14,20 @@ tags:
 > [PythonChallenge](http://www.pythonchallenge.com/)  
 > To read the pre-Level of PythonChallenge at this site: [Ethan.Penx Blog in ITeye](http://jnstar.iteye.com/admin/blogs/2214796) 
 
+#### Table of Contents
+1. [Level 7](#Level 7)
+2. [Level 8](#Level 8)
+3. [Level 9](#Level 9)
+
+---
+
+<p id="Level 7"></p>
+
 ## Level 7  
 
 **Riddle Page L7:** [http://www.pythonchallenge.com/pc/def/oxygen.html](http://www.pythonchallenge.com/pc/def/oxygen.html) 
 
-The title of the page is "smarty", and there's a picture which with a strip of greyscale squares across the middle is in the top of the page. At the sight of the clue "smarty", what coming to my mind is the **Python Module** named **Smartypants**, but, sadly, there's nothing I can get through the **smartypants.**
+The title of the page is "smarty", and there's a picture  with a strip of greyscale squares across the middle which is at the top of the page. At the sight of the clue "smarty", what occurs to me is a **Python Module** named **Smartypants**, but sadly, there's nothing I can get by **smartypants.**
 
 Mabye the clue is in those greyscale squares, with the greyscale level (range from 0-255) encoding something in it, whatever, try it first.
 
@@ -52,9 +61,9 @@ Turns out, the colour changes every 7 pixels.
 So, change the **url** (**oxygen --> integrity**) to getting Level 8:
 **Riddle Page L8:** [http://www.pythonchallenge.com/pc/def/integrity.html](http://www.pythonchallenge.com/pc/def/integrity.html)
 
-#### Relative
+### The Related
 
-There's something to help understanding all the Image stuff as following:
+There's something to help understand all the Image stuff as following:
 
 * [PIL - Image Module](http://pillow.readthedocs.io/en/3.2.x/reference/Image.html)
 
@@ -77,8 +86,71 @@ Returns:	The pixel value. If the image is a multi-layer image, this method retur
     item of each sequence, substituting None for missing values when not all
     sequences have the same length.  If the function is None, return a list of the items of the sequence (or a list of tuples if more than one sequence).
 
+---
 
 
-**-- Continuing**
+
+
+<p id="Level 8"></p>
+
+## Level 8
+
+
+
+**Riddle Page L8:** [http://www.pythonchallenge.com/pc/def/integrity.html](http://www.pythonchallenge.com/pc/def/integrity.html)
+
+Well, there's a picture with a bee flying up the flower, and the clues "Where is the missing link?" at the bottom of the page, clicked the picture takes us to a **password-protected** page for area "inflate". And the title of this page is "working hard?".  Seriously? working hard? I'm totally confused...
+
+Let's do it the old ways, check the source code of this page, it's showed me a series of messy strings, Unfortunately, I can't figure out what types of coding it used, neither encoding it.
+
+Fine, google the messy strings, turns out, it's brz2 compressed file format. 
+	
+	>>> un = "BZh91AY&SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07<]\xc9\x14\xe1BA\x06\xbe\x084"
+	>>> pw = 'BZh91AY&SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13<]\xc9\x14\xe1BBP\x91\xf08'
+	
+	>>> import bz2
+	>>> bz2.decompress(un)
+	'huge'
+	>>> bz2.decompress(pw)
+	'file'
+	
+So, entered the username&password come to the Level 9: [http://www.pythonchallenge.com/pc/return/good.html](http://www.pythonchallenge.com/pc/return/good.html)
+
+
+BTW, here's the hint comes from official solutions:
+
+> You see a bee in the picture. She sounds busy too. What could that mean?
+bee? busy. busy? busy too ? bz2?
+The hint in the password box says "inflate" so you consider to try to decompress the strings.
+
+
+#### THe Related
+
+
+* [Level8:Main Page
+](http://wiki.pythonchallenge.com/index.php?title=Level8:Main_Page)
+
+##### functions: 
+
+* **bz2.compress(data[, compresslevel])**  
+Compress data in one shot. If you want to compress data sequentially, use an instance of BZ2Compressor instead. The compresslevel parameter, if given, must be a number between 1 and 9; the default is 9.
+
+* **bz2.decompress(data)**  
+Decompress data in one shot. If you want to decompress data sequentially, use an instance of BZ2Decompressor instead.
+
+
+
+<p id="Level 9"></p>
+
+## Level 9
+
+**Riddle Page Level 9: **[http://www.pythonchallenge.com/pc/return/good.html](http://www.pythonchallenge.com/pc/return/good.html)
+
+
+
+
+
+
+ **------ To be continue...**
 
  

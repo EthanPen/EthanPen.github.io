@@ -177,11 +177,22 @@
 To read the pre-Level of PythonChallenge at this site: <a href="http://jnstar.iteye.com/admin/blogs/2214796">Ethan.Penx Blog in ITeye</a></p>
 </blockquote>
 
+<h4 id="table-of-contents">Table of Contents</h4>
+<ol>
+  <li><a href="#Level 7">Level 7</a></li>
+  <li><a href="#Level 8">Level 8</a></li>
+  <li><a href="#Level 9">Level 9</a></li>
+</ol>
+
+<hr />
+
+<p id="Level 7"></p>
+
 <h2 id="level-7">Level 7</h2>
 
 <p><strong>Riddle Page L7:</strong> <a href="http://www.pythonchallenge.com/pc/def/oxygen.html">http://www.pythonchallenge.com/pc/def/oxygen.html</a></p>
 
-<p>The title of the page is “smarty”, and there’s a picture which with a strip of greyscale squares across the middle is in the top of the page. At the sight of the clue “smarty”, what coming to my mind is the <strong>Python Module</strong> named <strong>Smartypants</strong>, but, sadly, there’s nothing I can get through the <strong>smartypants.</strong></p>
+<p>The title of the page is “smarty”, and there’s a picture  with a strip of greyscale squares across the middle which is at the top of the page. At the sight of the clue “smarty”, what occurs to me is a <strong>Python Module</strong> named <strong>Smartypants</strong>, but sadly, there’s nothing I can get by <strong>smartypants.</strong></p>
 
 <p>Mabye the clue is in those greyscale squares, with the greyscale level (range from 0-255) encoding something in it, whatever, try it first.</p>
 
@@ -221,9 +232,9 @@ integrity
 <p>So, change the <strong>url</strong> (<strong>oxygen –&gt; integrity</strong>) to getting Level 8:
 <strong>Riddle Page L8:</strong> <a href="http://www.pythonchallenge.com/pc/def/integrity.html">http://www.pythonchallenge.com/pc/def/integrity.html</a></p>
 
-<h4 id="relative">Relative</h4>
+<h3 id="the-related">The Related</h3>
 
-<p>There’s something to help understanding all the Image stuff as following:</p>
+<p>There’s something to help understand all the Image stuff as following:</p>
 
 <ul>
   <li>
@@ -256,7 +267,68 @@ Returns:	The pixel value. If the image is a multi-layer image, this method retur
   </li>
 </ul>
 
-<p><strong>– Continuing</strong></p>
+<hr />
+
+<p id="Level 8"></p>
+
+<h2 id="level-8">Level 8</h2>
+
+<p><strong>Riddle Page L8:</strong> <a href="http://www.pythonchallenge.com/pc/def/integrity.html">http://www.pythonchallenge.com/pc/def/integrity.html</a></p>
+
+<p>Well, there’s a picture with a bee flying up the flower, and the clues “Where is the missing link?” at the bottom of the page, clicked the picture takes us to a <strong>password-protected</strong> page for area “inflate”. And the title of this page is “working hard?”.  Seriously? working hard? I’m totally confused…</p>
+
+<p>Let’s do it the old ways, check the source code of this page, it’s showed me a series of messy strings, Unfortunately, I can’t figure out what types of coding it used, neither encoding it.</p>
+
+<p>Fine, google the messy strings, turns out, it’s brz2 compressed file format.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; un = "BZh91AY&amp;SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07&lt;]\xc9\x14\xe1BA\x06\xbe\x084"
+&gt;&gt;&gt; pw = 'BZh91AY&amp;SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13&lt;]\xc9\x14\xe1BBP\x91\xf08'
+
+&gt;&gt;&gt; import bz2
+&gt;&gt;&gt; bz2.decompress(un)
+'huge'
+&gt;&gt;&gt; bz2.decompress(pw)
+'file'
+</code></pre>
+</div>
+
+<p>So, entered the username&amp;password come to the Level 9: <a href="http://www.pythonchallenge.com/pc/return/good.html">http://www.pythonchallenge.com/pc/return/good.html</a></p>
+
+<p>BTW, here’s the hint comes from official solutions:</p>
+
+<blockquote>
+  <p>You see a bee in the picture. She sounds busy too. What could that mean?
+bee? busy. busy? busy too ? bz2?
+The hint in the password box says “inflate” so you consider to try to decompress the strings.</p>
+</blockquote>
+
+<h4 id="the-related-1">THe Related</h4>
+
+<ul>
+  <li><a href="http://wiki.pythonchallenge.com/index.php?title=Level8:Main_Page">Level8:Main Page
+</a></li>
+</ul>
+
+<h5 id="functions-1">functions:</h5>
+
+<ul>
+  <li>
+    <p><strong>bz2.compress(data[, compresslevel])</strong><br />
+Compress data in one shot. If you want to compress data sequentially, use an instance of BZ2Compressor instead. The compresslevel parameter, if given, must be a number between 1 and 9; the default is 9.</p>
+  </li>
+  <li>
+    <p><strong>bz2.decompress(data)</strong><br />
+Decompress data in one shot. If you want to decompress data sequentially, use an instance of BZ2Decompressor instead.</p>
+  </li>
+</ul>
+
+<p id="Level 9"></p>
+
+<h2 id="level-9">Level 9</h2>
+
+<p>**Riddle Page Level 9: **<a href="http://www.pythonchallenge.com/pc/return/good.html">http://www.pythonchallenge.com/pc/return/good.html</a></p>
+
+<p><strong>—— To be continue…</strong></p>
 
 
 
@@ -269,6 +341,13 @@ Returns:	The pixel value. If the image is a multi-layer image, this method retur
                         </a>
                     </li>
                     
+                    
+                    <li class="next">
+                        <a href="/2016/06/30/2016.06.30-and-DoublePinyin/" data-toggle="tooltip" data-placement="top" title="2016-06-30 and Double Pinyin">
+                        Next<br>
+                        <span>2016-06-30 and Double Pinyin</span>
+                        </a>
+                    </li>
                     
                 </ul>
 
@@ -306,11 +385,23 @@ Returns:	The pixel value. If the image is a multi-layer image, this method retur
                     <div class="tags">
                         
                             
+                                <a href="/tags/#Life" title="Life" rel="2">
+                                    Life
+                                </a>
+                            
+                        
+                            
                         
                             
                         
                             
                         
+                            
+                        
+                            
+                                <a href="/tags/#Python" title="Python" rel="4">
+                                    Python
+                                </a>
                             
                         
                             
@@ -326,7 +417,7 @@ Returns:	The pixel value. If the image is a multi-layer image, this method retur
                 <!-- Friends Blog -->
                 
                 <hr>
-                <h5>INTERESTING</h5>
+                <h5>INTERESTS</h5>
                 <ul class="list-inline">
                     
                         <li><a href="#">CS</a></li>

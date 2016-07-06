@@ -5,9 +5,856 @@
     <description>坐观垂钓者,徒有羡鱼情.</description>
     <link>http://EthanPen.github.io/</link>
     <atom:link href="http://EthanPen.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 26 Jun 2016 21:27:17 +0800</pubDate>
-    <lastBuildDate>Sun, 26 Jun 2016 21:27:17 +0800</lastBuildDate>
+    <pubDate>Wed, 06 Jul 2016 23:05:29 +0800</pubDate>
+    <lastBuildDate>Wed, 06 Jul 2016 23:05:29 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title> Get the Subtitle</title>
+        <description>&lt;h2 id=&quot;get-the-subtitle&quot;&gt;Get the Subtitle&lt;/h2&gt;
+
+&lt;p&gt;Avatar: The last Airbender, 起初是为了练习英语听力及口语而了解的一部动漫，评价很是不错，看了下来之后确实很是喜欢。从网上 Download 下来 .srt 文件，打印之的话，其中的时间行却是无用。 自己写了个小脚本将字幕提取了出来。
+这部剧有三季，Download 下来三季的 zip 包，解压缩后放置在桌面上各季的文件夹中。分别新建文件夹用来保存脚本生成的 .txt 文件。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import re
+import os
+
+fPath = &quot;/Users/xing/Desktop/Avatar_The_Last_Airbender - season 1.en&quot;
+sPath = &quot;/Users/xing/Desktop/Avatar_The_Last_Airbender_subtitle/&quot;
+
+os.chdir(fPath)
+flist = os.listdir(fPath)
+
+for eachFile in flist[1:]:
+	with open(eachFile) as F:
+		subTxt = F.read()
+		subTxtList = re.findall(r&#39;[^\n][a-zA-Z]+.*\n&#39;, subTxt)
+		print subTxtList
+		fullSPath = os.path.join(sPath, eachFile+&#39;.txt&#39;)
+		fileSave = open(fullSPath, &#39;w&#39;)
+		for eachline in subTxtList[:-2]:
+			fileSave.write(eachline+&#39;\n&#39;)
+		fileSave.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;avatar-the-last-airbender&quot;&gt;Avatar: The last Airbender&lt;/h2&gt;
+
+&lt;p&gt;这部剧在 IMDB 的评分：&lt;a href=&quot;http://www.imdb.com/title/tt0417299/&quot;&gt;Avatar: The Last Airbender(IMDB)&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;basic&quot;&gt;Basic&lt;/h4&gt;
+
+&lt;p&gt;《最后的风之子》是由派拉蒙影业公司出品，由M·奈特·沙马兰执导，诺亚·林格、戴夫·帕特尔、妮可拉·佩尔茨、杰克逊·拉斯波恩领衔主演的奇幻片。
+该片根据动画系列片《降世神通：最后的气宗》改编，讲述了世界被四大神力“气、火、水、土”支配着，其中被称为“神通”的便是世上唯一同时拥有这四种神力的人，他可以阻止邪恶的火烈国征服世界的故事。
+影片于2010年7月1日在美国上映，2010年8月23日在中国内地上映。&lt;/p&gt;
+
+&lt;h4 id=&quot;backstory&quot;&gt;BackStory&lt;/h4&gt;
+
+&lt;p&gt;全世界被战火吞噬，没有人能够阻止无法避免的毁灭。一个世纪以来，烈火国一直在全世界开战，企图征服其它的三个部族，大气牧族、水族部落以及大地国。烈火国对于被他们强大的军力击败的村落只给了一个选择，完全投降或是彻底毁灭。当世界各地的村民徒然地试着自卫，同时也极力保护少数拥有他们部族的神力，并且能够随心所欲驾驭属于他们部族的元素的神通。但是拥有模庞大的军队以及毁灭性强大的武器的烈火国，早就消灭了地球上每一个风之子。如今他们把目标转向水族部落，准备攻下北极水族的城堡。某天，一名年轻的截水神通凯塔拉（妮可拉·佩尔茨饰）和她的哥哥苏卡（杰克逊·拉斯波恩饰）一起练习她的截水技巧，意外发现一个名字叫安的小男孩（诺亚·林格饰），但是当安展现出御气的能力，凯塔拉和苏卡发现，他们找到的不只是最后的风之子。身为被预言的降世神通－唯一能够同时拥有四大神力的人，这个小小的风之子是唯一拥有击退烈火国猛烈攻击的能力，并且最后将为饱受战火荼毒的世界带来和谐的神通王。但是他能学会其它的三大神力，成为他注定要当的英雄，并且及时拯救世界吗。&lt;/p&gt;
+
+&lt;h4 id=&quot;wikipedia-the-last-airbender&quot;&gt;Wikipedia: The last Airbender&lt;/h4&gt;
+
+&lt;p&gt;This article is about the TV series. For the 2010 film, see The Last Airbender.
+Avatar: The Last Airbender
+Avatar The Last Airbender logo.svg
+Also known as	Avatar: The Legend of Aang
+Genre	
+Action/Adventure
+Fantasy
+Comedy-drama
+Created by	
+Michael Dante DiMartino
+Bryan Konietzko
+Written by	
+Michael Dante DiMartino
+Bryan Konietzko
+Aaron Ehasz
+Tim Hedrick
+John O’Bryan
+Elizabeth Welch Ehasz
+Joshua Hamilton
+May Chan
+Matthew Hubbard
+James Eagan
+Directed by	
+Lauren MacMullan
+Dave Filoni
+Giancarlo Volpe
+Ethan Spaulding
+Joaquim Dos Santos
+Voices of	
+Zach Tyler Eisen
+Mae Whitman
+Jack DeSena
+Jessie Flower
+Dante Basco
+Dee Bradley Baker
+Jennie Kwan
+Mako (Seasons 1–2)
+Greg Baldwin (Season 3)
+Mark Hamill
+Grey DeLisle
+Jason Isaacs
+Clancy Brown
+Composer(s)	Jeremy Zuckerman, Benjamin Wynn
+Country of origin	United States
+Original language(s)	English
+No. of seasons	3
+No. of episodes	61 (list of episodes)
+Production
+Executive producer(s)	
+Michael Dante DiMartino
+Bryan Konietzko
+Aaron Ehasz
+Running time	22 minutes
+Production company(s)	
+Nickelodeon Animation Studios
+DR Movie
+JM Animation
+MOI Animation
+Titmouse (opening)[1]
+Release
+Original network	Nickelodeon
+Picture format	NTSC 4:3 (480i)
+Original release	February 21, 2005 – July 19, 2008
+Chronology
+Followed by	
+Avatar: The Last Airbender (comics)
+The Legend of Korra (TV series)
+External links
+Official website
+	This article contains Chinese text. Without proper rendering support, you may see question marks, boxes, or other symbols instead of Chinese characters.
+Avatar: The Last Airbender (Avatar: The Legend of Aang in some regions) is an American animated television series that aired for three seasons (referred to as “books” in each episode’s title card) on Nickelodeon from 2005 to 2008. Avatar: The Last Airbender is set in an Asiatic-like world[2] in which some people are able to manipulate the classical elements by use of psychokinetic variants of Chinese martial arts, known as “bending”. The show combines the styles of anime and American cartoons, and relies on the imagery of various East Asian, Inuit, Southeast Asian, South Asian, and New World societies. Therefore, whether or not the series can be considered as an anime work is often discussed.[3]&lt;/p&gt;
+
+&lt;p&gt;The series follows the adventures of protagonist twelve-year-old Aang and his friends, who must bring peace and unity to the world by ending the Fire Lord’s war against the other three nations.[4] The pilot episode first aired on February 21, 2005,[5] and the series concluded with a widely praised two-hour episode on July 19, 2008.[6] The show is obtainable from various sources, including DVD, the iTunes Store, the Zune Marketplace, the Xbox Live Marketplace, the PlayStation Store, Netflix, Amazon Video, and the Nicktoons Network.[7]&lt;/p&gt;
+
+&lt;p&gt;Throughout its run, Avatar: The Last Airbender was universally acclaimed by audiences and critics alike.[8] Praises went to the art direction, humor, cultural references, characters, and themes. It was also commercially successful, garnering 5.6 million viewers on its best-rated showing and receiving high ratings in the Nicktoons lineup, even outside of its 6- to 11-year-old demographic.[4][9] The series has been nominated for and won awards from the Annie Awards, the Genesis Awards, a Primetime Emmy Award and a Peabody Award, among others. The first season’s success prompted Nickelodeon to order second[10] and third[11] seasons.&lt;/p&gt;
+
+&lt;p&gt;In other media, the series has spawned a critically panned, but financially successful, live-action film, titled The Last Airbender, directed by M. Night Shyamalan; scaled action figures;[12] a trading card game;[13][14] three video games; stuffed animals distributed by Paramount Parks and two Lego sets. An art book was also released in mid-2010.[15][16] A sequel series, The Legend of Korra, aired from 2012 to 2014.[17]&lt;/p&gt;
+</description>
+        <pubDate>Wed, 06 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://EthanPen.github.io/2016/07/06/Get-the-Subtitle/</link>
+        <guid isPermaLink="true">http://EthanPen.github.io/2016/07/06/Get-the-Subtitle/</guid>
+        
+        <category>Python</category>
+        
+        <category>English</category>
+        
+        
+      </item>
+    
+      <item>
+        <title> Python Module RE</title>
+        <description>&lt;h2 id=&quot;re&quot;&gt;RE&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; str1 = &#39; ShenZhen University &#39;
+
+&amp;gt;&amp;gt;&amp;gt; str1.find(&#39;University&#39;)
+10
+&amp;gt;&amp;gt;&amp;gt; str1.find(&#39;11&#39;)
+-1
+&amp;gt;&amp;gt;&amp;gt; help(str1.find)
+find(...)
+S.find(sub [,start [,end]]) -&amp;gt; int
+
+Return the lowest index in S where substring sub is found,
+such that sub is contained within S[start:end].  Optional
+arguments start and end are interpreted as in slice notation.  
+   
+   
+&amp;gt;&amp;gt;&amp;gt; str1.startswith(&#39;Zhen&#39;)
+False
+&amp;gt;&amp;gt;&amp;gt; str1.startswith(&#39; Shen&#39;)
+True
+&amp;gt;&amp;gt;&amp;gt; import re
+&amp;gt;&amp;gt;&amp;gt; pa = re.compile(r&#39;University&#39;)
+
+
+&amp;gt;&amp;gt;&amp;gt; type(pa)
+&amp;lt;type &#39;_sre.SRE_Pattern&#39;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; dir(pa)
+[&#39;__class__&#39;, &#39;__copy__&#39;, &#39;__deepcopy__&#39;, &#39;__delattr__&#39;, &#39;__doc__&#39;, &#39;__format__&#39;, &#39;__getattribute__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;findall&#39;, &#39;finditer&#39;, &#39;flags&#39;, &#39;groupindex&#39;, &#39;groups&#39;, &#39;match&#39;, &#39;pattern&#39;, &#39;scanner&#39;, &#39;search&#39;, &#39;split&#39;, &#39;sub&#39;, &#39;subn&#39;]
+
+
+&amp;gt;&amp;gt;&amp;gt; help(pa.match) 
+match(...)
+match(string[, pos[, endpos]]) --&amp;gt; match object or None.
+Matches zero or more characters at the beginning of the string
+(END)
+
+
+&amp;gt;&amp;gt;&amp;gt; pa = re.compile(&#39;University&#39;)
+&amp;gt;&amp;gt;&amp;gt; pa.match(str1)
+&amp;gt;&amp;gt;&amp;gt; pa = re.compile(&#39; Shen&#39;)
+&amp;gt;&amp;gt;&amp;gt; pa.match(str1)
+&amp;lt;_sre.SRE_Match object at 0x107f13f38&amp;gt;
+
+
+&amp;gt;&amp;gt;&amp;gt; ma = pa.match(str1)
+&amp;gt;&amp;gt;&amp;gt; ma.group()
+&#39; Shen&#39;
+&amp;gt;&amp;gt;&amp;gt; dir(ma)
+[&#39;__class__&#39;, &#39;__copy__&#39;, &#39;__deepcopy__&#39;, &#39;__delattr__&#39;, &#39;__doc__&#39;, &#39;__format__&#39;, &#39;__getattribute__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__setattr__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;end&#39;, &#39;endpos&#39;, &#39;expand&#39;, &#39;group&#39;, &#39;groupdict&#39;, &#39;groups&#39;, &#39;lastgroup&#39;, &#39;lastindex&#39;, &#39;pos&#39;, &#39;re&#39;, &#39;regs&#39;, &#39;span&#39;, &#39;start&#39;, &#39;string&#39;]
+	
+&amp;gt;&amp;gt;&amp;gt; pa = re.compile(&#39; shen&#39;, re.I)
+&amp;gt;&amp;gt;&amp;gt; ma = pa.match(str1)
+&amp;gt;&amp;gt;&amp;gt; ma.group()
+&#39; Shen&#39;
+
+
+&amp;gt;&amp;gt;&amp;gt; ma = re.match(r&#39;hello&#39;, &#39;hello SZU, blah blah&#39;)
+&amp;gt;&amp;gt;&amp;gt; ma.group()
+&#39;hello&#39;
+&amp;gt;&amp;gt;&amp;gt; ma.groups()
+()
+&amp;gt;&amp;gt;&amp;gt; ma = re.match(r&#39;(hello)&#39;, &#39;hello SZU, blah blah&#39;)
+&amp;gt;&amp;gt;&amp;gt; ma.group()
+&#39;hello&#39;
+&amp;gt;&amp;gt;&amp;gt; ma.groups()
+(&#39;hello&#39;,)		 
+
+&amp;gt;&amp;gt;&amp;gt; help(re.match)	
+match(pattern, string, flags=0)
+    Try to apply the pattern at the start of the string, returning
+    a match object, or None if no match was found.
+(END)
+
+
+
+
+
+# match a Python variable(start with a &#39;_&#39; or letter)
+&amp;gt;&amp;gt;&amp;gt; ma = re.match(r&#39;[_a-zA-Z]+[_\w]*&#39;, &#39;_str1&#39;)
+&amp;gt;&amp;gt;&amp;gt; ma
+&amp;lt;_sre.SRE_Match object at 0x107e1eb28&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; ma.group()
+&#39;_str1&#39;
+&amp;gt;&amp;gt;&amp;gt; ma = re.match(r&#39;[_a-zA-Z]+[_\w]*&#39;, &#39;123_wer&#39;)
+&amp;gt;&amp;gt;&amp;gt; ma
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;research-an-refindall&quot;&gt;re.search an re.findall&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# re.search and re.findall
+&amp;gt;&amp;gt;&amp;gt; str2 = &#39;SZU University course = 999&#39;
+&amp;gt;&amp;gt;&amp;gt; str2.find(&#39;999&#39;)
+24
+&amp;gt;&amp;gt;&amp;gt; 
+&amp;gt;&amp;gt;&amp;gt; info = re.search(r&#39;\d+&#39;, str2)
+&amp;gt;&amp;gt;&amp;gt; info.group()
+&#39;999&#39;
+&amp;gt;&amp;gt;&amp;gt; str3 = &#39;c++ = 100, java = 90, python = 78&#39;
+&amp;gt;&amp;gt;&amp;gt; info = re.search(r&#39;\d+&#39;, str3)
+&amp;gt;&amp;gt;&amp;gt; info.group()
+&#39;100&#39;
+&amp;gt;&amp;gt;&amp;gt; info = re.findall(r&#39;\d+&#39;, str3)
+&amp;gt;&amp;gt;&amp;gt; type(info)
+&amp;lt;type &#39;list&#39;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; info
+[&#39;100&#39;, &#39;90&#39;, &#39;78&#39;]
+&amp;gt;&amp;gt;&amp;gt; sum([int(x) for x in info])
+268
+&amp;gt;&amp;gt;&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;resub-and-resplit&quot;&gt;re.sub and re.split&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# re.sub and re.split
+&amp;gt;&amp;gt;&amp;gt; def add1(match):
+...     val = match.group()
+...     num = int(val)+1
+...     return str(num)
+... 
+&amp;gt;&amp;gt;&amp;gt; str3 = &#39;SZ University course = 999&#39;
+&amp;gt;&amp;gt;&amp;gt; re.sub(r&#39;\d+&#39;, add1, str3)
+&#39;SZ University course = 1000&#39;
+
+&amp;gt;&amp;gt;&amp;gt; help(re.sub)
+	sub(pattern, repl, string, count=0, flags=0)
+    Return the string obtained by replacing the leftmost
+    non-overlapping occurrences of the pattern in string by the
+    replacement repl.  repl can be either a string or a callable;
+    if a string, backslash escapes in it are processed.  If it is
+    a callable, it&#39;s passed the match object and must return
+    a replacement string to be used.
+(END)
+
+&amp;gt;&amp;gt;&amp;gt; str4 = &#39;progLanguage:C C++ Python Java Php&#39;
+&amp;gt;&amp;gt;&amp;gt; re.split(r&#39;:|&#39;, str4)
+[&#39;progLanguage&#39;, &#39;C C++ Python Java Php&#39;]
+&amp;gt;&amp;gt;&amp;gt; re.split(r&#39; :| &#39;, str4)
+[&#39;progLanguage:C&#39;, &#39;C++&#39;, &#39;Python&#39;, &#39;Java&#39;, &#39;Php&#39;]
+
+&amp;gt;&amp;gt;&amp;gt; help(re.split)
+	split(pattern, string, maxsplit=0, flags=0)
+    Split the source string by the occurrences of the pattern,
+    returning a list containing the resulting substrings.
+	(END)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Fri, 01 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://EthanPen.github.io/2016/07/01/Python-Module-RE/</link>
+        <guid isPermaLink="true">http://EthanPen.github.io/2016/07/01/Python-Module-RE/</guid>
+        
+        <category>Python</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Notes of Core Python Programming, 2nd edition</title>
+        <description>&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#Python Objects&quot;&gt;Python Objects&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Numbers&quot;&gt;Numbers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Mapping and Set Types&quot;&gt;Mapping and Set Types&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Functions and Functional Programming&quot;&gt;Functions and Functional Programming&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p id=&quot;Python Objects&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;python-objects&quot;&gt;Python Objects&lt;/h2&gt;
+&lt;hr /&gt;
+
+&lt;h5 id=&quot;section&quot;&gt;工厂函数&lt;/h5&gt;
+&lt;p&gt;就是指那些内建函数都是类对象，当调用他们时，实际上是创建了一个类实例。&lt;/p&gt;
+
+&lt;p&gt;#####变量定义&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;显示声明&lt;/p&gt;
+
+    &lt;p&gt;C: 变量声明必须位于代码块最开始，且在任何其他语句之前。&lt;br /&gt;
+ C++、Java: 允许”随时随地”声明变量，不过仍必须在变量被使用前声明变量的名字和类型。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;隐式&lt;/p&gt;
+
+    &lt;p&gt;Python: 变量在第一次被赋值时自动声明。Python 是一种解释性语言，在创建（也就是赋值时），解释器会根据语法和右侧的操作数来决定新对象的类型。在创建对象后，一个该对象的应用会被赋值给左侧的变量。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;section-1&quot;&gt;内存分配&lt;/h5&gt;
+
+&lt;p&gt;为变量分配内存时，是在借用系统资源，在用完之后，应该释放借用的系统资源。Python 解释器承担了此任务。&lt;/p&gt;
+
+&lt;h5 id=&quot;section-2&quot;&gt;引用计数&lt;/h5&gt;
+
+&lt;p&gt;Python 使用引用计数技术来保持追踪内存中的对象。当对象被创建时，便创建一个引用计数（每个对象各有多少个引用），当对象不在需要时（也即引用计数变为0时），它被垃圾回收。&lt;/p&gt;
+
+&lt;h5 id=&quot;dir-and-del&quot;&gt;dir() and del&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; print dir.__doc__
+dir([object]) -&amp;gt; list of strings
+
+If called without an argument, return the names in the current scope.
+Else, return an alphabetized list of names comprising (some of) the attributes
+of the given object, and of attributes reachable from it.
+If the object supplies a method named __dir__, it will be used; otherwise
+the default dir() logic is used and returns:
+  for a module object: the module&#39;s attributes.
+  for a class object:  its attributes, and recursively the attributes
+    of its bases.
+  for any other object: its attributes, its class&#39;s attributes, and
+    recursively the attributes of its class&#39;s base classes.
+
+&amp;gt;&amp;gt;&amp;gt; dir()
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;]
+&amp;gt;&amp;gt;&amp;gt; import sys 
+&amp;gt;&amp;gt;&amp;gt; dir()
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;sys&#39;]
+&amp;gt;&amp;gt;&amp;gt; del sys
+&amp;gt;&amp;gt;&amp;gt; dir()
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;reduce-the-number-of-lookups&quot;&gt;Reduce the Number of Lookups&lt;/h5&gt;
+
+&lt;p&gt;To actually get the integer type object, the interpreter has to look up the &lt;strong&gt;types&lt;/strong&gt; name first, and then within that module’s dictionary, find &lt;strong&gt;IntType&lt;/strong&gt;. By using from-import, you can take away one lookup:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from types import IntType
+if type(num) == IntType ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p id=&quot;Numbers&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;numbers&quot;&gt;Numbers&lt;/h2&gt;
+
+&lt;h5 id=&quot;type-categorized-by-the-update-model&quot;&gt;Type Categorized by the Update Model&lt;/h5&gt;
+
+&lt;table border=&quot;1&quot;&gt;
+&lt;tr&gt;
+&lt;th&gt;Update Model Category&lt;/th&gt;
+&lt;th&gt;Python Types That Fit Category&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Mutable&lt;/td&gt;
+&lt;td&gt;List, dictionaries&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Immutable&lt;/td&gt;
+&lt;td&gt;Numbers, strings, tuples&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Rather than referring to the original objects, new objects with the new values were allocated and (re)assigned to the original varibale names, and the old objects were garbage-collected. One can confirm this by using the &lt;strong&gt;__id()__&lt;/strong&gt; &lt;strong&gt;BIF&lt;/strong&gt;(build-in function) to compare object identities before and after such assignments.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; dir()
+[&#39;__builtins__&#39;, &#39;__doc__&#39;, &#39;__name__&#39;, &#39;__package__&#39;, &#39;foo&#39;, &#39;types&#39;, &#39;x&#39;]
+&amp;gt;&amp;gt;&amp;gt; x
+1
+&amp;gt;&amp;gt;&amp;gt; id(x)
+140457926481800
+&amp;gt;&amp;gt;&amp;gt; x += 1
+&amp;gt;&amp;gt;&amp;gt; id(x)
+140457926481776
+
+# a and b referring the same ...
+&amp;gt;&amp;gt;&amp;gt; a = 10
+&amp;gt;&amp;gt;&amp;gt; b = 10
+&amp;gt;&amp;gt;&amp;gt; a is b
+True
+&amp;gt;&amp;gt;&amp;gt; id(a), id(b)
+(140309388376016, 140309388376016)
+
+&amp;gt;&amp;gt;&amp;gt; e = 10.0
+&amp;gt;&amp;gt;&amp;gt; f = 10.0
+&amp;gt;&amp;gt;&amp;gt; e is f
+False
+&amp;gt;&amp;gt;&amp;gt; id(e), id(f)
+(140309388384736, 140309388384760)
+
+&amp;gt;&amp;gt;&amp;gt; s = 0.0
+&amp;gt;&amp;gt;&amp;gt; for i in range(10): 
+...     s += 0.1
+... 
+&amp;gt;&amp;gt;&amp;gt; s
+0.9999999999999999	
+&amp;gt;&amp;gt;&amp;gt; print s
+1.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Notice&lt;/strong&gt; how for each change, the ID for the list remained the same.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; list
+[&#39;this&#39;, 5, &#39;list&#39;]
+&amp;gt;&amp;gt;&amp;gt; id(list)
+4303214496
+&amp;gt;&amp;gt;&amp;gt; list[0] = &#39;list&#39;
+&amp;gt;&amp;gt;&amp;gt; list
+[&#39;list&#39;, 5, &#39;list&#39;]
+&amp;gt;&amp;gt;&amp;gt; id(list)
+4303214496
+&amp;gt;&amp;gt;&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Factory functions&lt;/strong&gt;, just means that those objects are now classes, and when you “call” them, you are just creating an instance of that class.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Compare&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;int()：&lt;/strong&gt; chops off the decimal point and everything after.  直接截去小数部分（返回值为整型）&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;floor()：&lt;/strong&gt; rounds you to the next smaller integer, i.e., the next integer moving in a negative direction(toward the left on the number line).  得到最接近原数但小于原数的整型。&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;round():&lt;/strong&gt; (round zero digits) rounds you to the nearest integer period.  得到最接近原数的整型。&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &amp;gt;&amp;gt;&amp;gt; print hex.__doc__
+  hex(number) -&amp;gt; string
+	
+  Return the hexadecimal representation of an integer or long integer.
+  &amp;gt;&amp;gt;&amp;gt; print oct.__doc__
+  oct(number) -&amp;gt; string
+	
+  Return the octal representation of an integer or long integer.
+  &amp;gt;&amp;gt;&amp;gt; 
+  &amp;gt;&amp;gt;&amp;gt; hex(255)
+  &#39;0xff&#39;
+  &amp;gt;&amp;gt;&amp;gt; oct(255)
+  &#39;0377&#39;
+
+  &amp;gt;&amp;gt;&amp;gt; print chr.__doc__
+  chr(i) -&amp;gt; character
+	
+  Return a string of one character with ordinal i; 0 &amp;lt;= i &amp;lt; 256.
+  &amp;gt;&amp;gt;&amp;gt; print ord.__doc__
+  ord(c) -&amp;gt; integer
+	
+  Return the integer ordinal of a one-character string.
+  &amp;gt;&amp;gt;&amp;gt; chr(99)
+  &#39;c&#39;
+  &amp;gt;&amp;gt;&amp;gt; ord(&#39;d&#39;)
+  100
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;sequences-strings-lists-and-tuples&quot;&gt;Sequences: strings, Lists, and Tuples&lt;/h2&gt;
+
+&lt;p&gt;Sequence type all share the same access model: ordered set with sequentially indexed offsets to get to each element. Multiple elements may be selected by using the slice operators.&lt;/p&gt;
+
+&lt;h5 id=&quot;repetition&quot;&gt;Repetition&lt;/h5&gt;
+
+&lt;p&gt;The repetition operator is useful when consecutive copies of sequence elements are desired. The syntax for using the repetition operator is as follows:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#sequence * copies_int
+&amp;gt;&amp;gt;&amp;gt; &#39;*&#39; * 40
+&#39;****************************************&#39;
+&amp;gt;&amp;gt;&amp;gt; &#39;what!&#39; * 4
+&#39;what!what!what!what!&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The number of copies, copies_int, must be an integer. As with the concatenation operator, the object returned is newly allocated to hold the contents of the multiply replicated objects.&lt;/p&gt;
+
+&lt;h5 id=&quot;format-operator-&quot;&gt;Format Operator (%)&lt;/h5&gt;
+
+&lt;p&gt;&lt;img class=&quot;shadow&quot; src=&quot;/img/inPost/CorePython-formatOperator.png&quot; width=&quot;280&quot; /&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;special-features-of-lists&quot;&gt;Special Features of Lists&lt;/h5&gt;
+
+&lt;p&gt;** Cerating Other Data Structures Using Lists **&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Stack:&lt;/strong&gt; A last-in-first-out &lt;strong&gt;(LILO)&lt;/strong&gt; data structure.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Queue:&lt;/strong&gt; A first-in-first-out &lt;strong&gt;(FIFO)&lt;/strong&gt; data structure, which works like a bank teller line. The first person in line is the first one served. New elements join by being “enqueued” at the end of the line, and elements are removed from the front by being “dequeued.”&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tuples:&lt;/strong&gt; Tuples are another container type extremely similar in nature to lists. The only visible difference between tuples and lists is that tuples use parentheses and lists use square brackets. and Tuples are immutable, Because of this, tuples can do something that lists cannot do…be a dictionary key. Tuples are also the default when dealing with a group of objects.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Sidle-Element Tuples: to place a trailing comma (,) after the first element to indicate that this is a tuple and not a grouping.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; type( (&#39;xyz&#39;) )
+&amp;lt;type &#39;str&#39;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt; type( (&#39;xyz&#39;,) )
+&amp;lt;type &#39;tuple&#39;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;dictionary-keys&quot;&gt;Dictionary Keys&lt;/h5&gt;
+
+&lt;p&gt;Immutable objects have values that cannot be changed. That means that they will always hash to the same value. This is the requirement for an object being valid dictionary key. As we will find out in the next chapter, keys must be washable objects, and tuples meet that criteria. Lists are not eligible.&lt;/p&gt;
+
+&lt;h5 id=&quot;lists--tuples&quot;&gt;Lists &amp;amp; Tuples&lt;/h5&gt;
+
+&lt;p&gt;&lt;strong&gt;list()&lt;/strong&gt; and &lt;strong&gt;tuple()&lt;/strong&gt; are functions that allow you to create a tuple from a list and vice versa( vice versa means ‘反之亦然’). When you have a tuple and want a list because you need to update its objects, the &lt;strong&gt;list()&lt;/strong&gt; function suddenly becomes your best buddy. When you have a list and want to pass it into a function, perhaps &lt;strong&gt;API&lt;/strong&gt;, and you do not want anyone to mess with the data, the &lt;strong&gt;tuple()&lt;/strong&gt; function comes in quite useful.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; tuple([1, 2, 3])
+(1, 2, 3)
+&amp;gt;&amp;gt;&amp;gt; list((4, 5, 6))
+[4, 5, 6]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Size&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a = tuple(range(1000))
+b = list(range(1000))
+
+a.__sizeof__() # 8024
+b.__sizeof__() # 9088
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Due to the smaller size of a tuple operation with it a bit faster but not that much to mention about until you have a huge amount of elements.
+Permitted operations&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;b    = [1,2]   
+b[0] = 3       # [3, 2]
+
+a    = (1,2)
+a[0] = 3       # Error
+sxdcfm, that also mean that you can&#39;t delete element or sort tuple. At the same time you could add new element to both list and tuple with the only difference that you will change id of the tuple by adding element
+
+a     = (1,2)
+b     = [1,2]  
+
+id(a)          # 140230916716520
+id(b)          # 748527696
+
+a   += (3,)    # (1, 2, 3)
+b   += [3]     # [1, 2, 3]
+
+id(a)          # 140230916878160
+id(b)          # 748527696
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Usage&lt;/strong&gt;&lt;br /&gt;
+You can’t use list as a dictionary identifier&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a    = (1,2)
+b    = [1,2] 
+
+c = {a: 1}     # OK
+c = {b: 1}     # Error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;copying-python-objects-and-shallow-and-deep-copies&quot;&gt;Copying python objects and Shallow and Deep Copies&lt;/h5&gt;
+
+&lt;p&gt;A shallow copy is where only references are copied…no new objects are made! If you also want copies of the objects(including recursively if you have container objects in containers), you will need to learn about deep copies.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.python-course.eu/deep_copy.php&quot;&gt;Shallow and Deep Copies&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The shallow and deep copy operations that we just described are found in the &lt;strong&gt;copy&lt;/strong&gt; module. There are really only two functions to use from this module: &lt;strong&gt;copy()&lt;/strong&gt; creates shallow copy, and &lt;strong&gt;deepcopy()&lt;/strong&gt; creates a deep copy.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.python.org/2/library/copy.html&quot;&gt;htts://docs.python.org/2/library/copy.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;append&quot;&gt;Append&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; import string
+&amp;gt;&amp;gt;&amp;gt; string.letters
+&#39;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;
+&amp;gt;&amp;gt;&amp;gt; string.digits
+&#39;0123456789&#39;
+
+&amp;gt;&amp;gt;&amp;gt; import keyword
+&amp;gt;&amp;gt;&amp;gt; keyword.kwlist
+[&#39;and&#39;, &#39;as&#39;, &#39;assert&#39;, &#39;break&#39;, &#39;class&#39;, &#39;continue&#39;, &#39;def&#39;, &#39;del&#39;, &#39;elif&#39;, &#39;else&#39;, &#39;except&#39;, &#39;exec&#39;, &#39;finally&#39;, &#39;for&#39;, &#39;from&#39;, &#39;global&#39;, &#39;if&#39;, &#39;import&#39;, &#39;in&#39;, &#39;is&#39;, &#39;lambda&#39;, &#39;not&#39;, &#39;or&#39;, &#39;pass&#39;, &#39;print&#39;, &#39;raise&#39;, &#39;return&#39;, &#39;try&#39;, &#39;while&#39;, &#39;with&#39;, &#39;yield&#39;]
+&amp;gt;&amp;gt;&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p id=&quot;Mapping and Set Types&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;mapping-and-set-types&quot;&gt;Mapping and Set Types&lt;/h2&gt;
+
+&lt;p&gt;Dictionary may be created using a very convenient built-in-method for creating a “default” dictionary whose elements all have the same value(default to &lt;strong&gt;None&lt;/strong&gt; if not given), &lt;strong&gt;fromkeys()&lt;/strong&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; ddict = {&#39;x&#39;: &#39;hello&#39;, &#39;y&#39;: &#39;dict&#39;}
+&amp;gt;&amp;gt;&amp;gt; fdict = {}.fromkeys((&#39;m&#39;, &#39;n&#39;), 8)
+&amp;gt;&amp;gt;&amp;gt; edict = {}.fromkeys((&#39;foo&#39;, &#39;bar&#39;))
+&amp;gt;&amp;gt;&amp;gt; print ddict, fdict, edict
+{&#39;y&#39;: &#39;dict&#39;, &#39;x&#39;: &#39;hello&#39;} {&#39;m&#39;: 8, &#39;n&#39;: 8} {&#39;foo&#39;: None, &#39;bar&#39;: None}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Core TIps&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Because &lt;strong&gt;dict()&lt;/strong&gt; is now a type and factory function, overriding it may cause you headaches and potential bugs. The interpreter will allow such overriding-hey, it thinks you seem smart and look like you know what you are doing! So be careful. Do &lt;strong&gt;NOT&lt;/strong&gt; use variables named after built-in types like: &lt;strong&gt;dict, list, file, bool, str, input, Or len!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How dictionaries are compared&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;shadow&quot; src=&quot;/img/inPost/CorePython-dictionaryCompare.png&quot; width=&quot;340&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;functions-and-functional-programming&quot;&gt;Functions and Functional Programming&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Decorator&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386819879946007bbf6ad052463ab18034f0254bf355000&quot;&gt;http://www.liaoxuefeng.com&lt;/a&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;http://thecodeship.com/patterns/guide-to-python-function-decorators/&quot;&gt;Guide to Python Function Decorators&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;non-keyword-variable-arguments-tuple&quot;&gt;Non-keyword Variable Arguments (&lt;strong&gt;Tuple&lt;/strong&gt;)&lt;/h5&gt;
+
+&lt;p&gt;A **TypeError exception is generated whenever an incorrect number of arguments is given in the function invocation. By adding a variable argument list variable at the end, we can handle the situation when more than enough arguments are passed to the function because all the extra(non-keyword) ones will be added to the variable argument tuple.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; def tupleVariable(arg1, arg2=&#39;defaultB&#39;, *theRest):
+...     &#39;display regular args and non-keyword variable args&#39;
+...     print &#39;format arg 1: &#39;, arg1
+...     print &#39;format arg 2: &#39;, arg2
+...     for eachXtrArg in theRest:
+...             print &#39;another arg: &#39;, eachXtrArg
+... 
+&amp;gt;&amp;gt;&amp;gt; tupleVariable(&#39;abc&#39;)
+format arg 1:  abc
+format arg 2:  defaultB
+&amp;gt;&amp;gt;&amp;gt; tupleVariable(23, 4.56)
+format arg 1:  23
+format arg 2:  4.56
+&amp;gt;&amp;gt;&amp;gt; tupleVariable(&#39;abc&#39;, 123, &#39;xyz&#39;, 456.789)
+format arg 1:  abc
+format arg 2:  123
+another arg:  xyz
+another arg:  456.789
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;keyword-variable-arguments-dictionary&quot;&gt;Keyword Variable Arguments (&lt;strong&gt;Dictionary&lt;/strong&gt;)&lt;/h5&gt;
+
+&lt;p&gt;In the case where we have a variable number or extra set of keyword arguments, these are placed into a dictionary where the “Keyword” argument variable names are the keys, and the arguments are their corresponding values. A double asterisk (**) is used.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; def dictVarArgs(arg1, arg2=&#39;defaultB&#39;, **theRest):
+...     &#39;display 2 regular args and keyword variable args&#39;
+...     print &#39;format arg1: &#39;, arg1
+...     print &#39;format arg2: &#39;, arg2
+...     for eachXtrArg in theRest.keys():
+...             print &#39;Xtr arg %s: %s&#39; %  (eachXtrArg, str(theRest[eachXtrArg]))
+... 
+&amp;gt;&amp;gt;&amp;gt; dictVarArgs(1220, 740.3, c=&#39;grail&#39;)
+format arg1:  1220
+format arg2:  740.3
+Xtr arg c: grail
+&amp;gt;&amp;gt;&amp;gt; dictVarArgs(arg2=&#39;tales&#39;, c=&#39;grail&#39;, d=123, arg1=&#39;mystery&#39;)
+format arg1:  mystery
+format arg2:  tales
+Xtr arg c: grail
+Xtr arg d: 123
+&amp;gt;&amp;gt;&amp;gt; dictVarArgs(&#39;one&#39;, d=10, c=&#39;grail&#39;, e=&#39;zoo&#39;, men=(123, &#39;fuck&#39;))
+format arg1:  one
+format arg2:  defaultB
+Xtr arg c: grail
+Xtr arg men: (123, &#39;fuck&#39;)
+Xtr arg e: zoo
+Xtr arg d: 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+</description>
+        <pubDate>Fri, 01 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://EthanPen.github.io/2016/07/01/Notes-of-CorePython/</link>
+        <guid isPermaLink="true">http://EthanPen.github.io/2016/07/01/Notes-of-CorePython/</guid>
+        
+        <category>Python</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>2016-06-30 and Double Pinyin</title>
+        <description>&lt;p&gt;” 也许以后还会应付其他考试，但今天这场该是最后一场算学分的考试了，感觉像是快要毕业了，虽然还早，也许，也并不早…”&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;2016-06-30&lt;/h2&gt;
+
+&lt;p&gt;翻查了下早先的Schedule，共有四次，每次都以日期命名，初次为2016-03-01-Schedule，间隔差不多均是一月，今次稍加总结。主要有以下几项内容：&lt;/p&gt;
+
+&lt;h4 id=&quot;english&quot;&gt;1. English&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;听说：
+    &lt;ul&gt;
+      &lt;li&gt;IPAD百度云赖世雄音标: 仅完成元音部分&lt;/li&gt;
+      &lt;li&gt;IPAD百度云盘: 文件夹“听VOA还不如听这些”&lt;/li&gt;
+      &lt;li&gt;English Pod: Lesson 90&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;写作：
+    &lt;ul&gt;
+      &lt;li&gt;NCE2: Finished.&lt;/li&gt;
+      &lt;li&gt;NCE3: 教材，自学导读，同步练习册，视频讲解&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;阅读：
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Harry Potter&lt;/strong&gt; (1-6 Finished)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;The devotion of suspect X&lt;/strong&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;associate-constructor&quot;&gt;2. Associate Constructor:&lt;/h4&gt;
+&lt;p&gt;二建已考完，耗了一定精力，九月份查成绩，也许会跪。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Online video&lt;/li&gt;
+  &lt;li&gt;Textbook&lt;/li&gt;
+  &lt;li&gt;市政：考点串通，案例分析题答题点背诵。&lt;/li&gt;
+  &lt;li&gt;管理：环球网校录播课&lt;/li&gt;
+  &lt;li&gt;法规：IPAD 百度云陈印法规视频&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;cpa&quot;&gt;3. CPA&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;preview_course: Finished&lt;/li&gt;
+  &lt;li&gt;basic lesson for now&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;cs&quot;&gt;4. CS&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;猎豹CPP-lessons&lt;/li&gt;
+  &lt;li&gt;Algorithms 4th edition-robert sedgewick&lt;/li&gt;
+  &lt;li&gt;Computer Network: A top-down approach.&lt;/li&gt;
+  &lt;li&gt;Python
+    &lt;ul&gt;
+      &lt;li&gt;Learn-Python-the-hard-way a&lt;/li&gt;
+      &lt;li&gt;python project “Instant Markup”&lt;/li&gt;
+      &lt;li&gt;Web Scraping with Python&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Flask Web Development developing web applications with python&lt;/li&gt;
+  &lt;li&gt;html, CSS, JavaScript tutorial&lt;/li&gt;
+  &lt;li&gt;Jekyll:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://ethanpen.github.io/planets-of-the-universe/&quot;&gt;planets-of-universer&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;https://ethanpen.github.io/&quot;&gt;Ethan.penx Blog&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;double-pinyin&quot;&gt;Double Pinyin&lt;/h2&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;双拼&lt;/h4&gt;
+&lt;p&gt;首先，双拼输入法写下这篇博文来介绍下什么是双拼&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;双拼是汉语拼音输入法的一种编码方案，使用双拼输入汉字时只需一个代表声母的字，一个代表韵母的字，即可打出任意一个中文单字。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;编码原理&lt;/h4&gt;
+
+&lt;p&gt;双拼编码是通过一定的规则把汉字的每种拼音编码为两个字母，根据编码规则汉字的拼音分为下列几种：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;双拼方案：单声母键位不变，主要是韵母键位的设计方案，即把三个双声母 zh, ch, sh 和35个韵母安排到键盘的26个字母键位上的设计方案。&lt;/li&gt;
+  &lt;li&gt;零声母方案：指的是全拼中无声母的音节在双拼中的处理方案，即全拼中有几个音节没有声母，双拼中需要把这个零声母实质化，于是就有了零声母方案。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;话不多说，上图
+&lt;img class=&quot;shadow&quot; src=&quot;/img/inPost/2016.06.30andDoublePinyin-cheatsheet.png&quot; width=&quot;420&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-3&quot;&gt;众说双拼&lt;/h4&gt;
+
+&lt;p&gt;当然，此刻的我对于双拼还没有太深的理解，因为我个人用上双拼也仅是两三日。原因很简单，勇于尝试。。。想知道双拼到底有何感受？也很简单，像我一样，装好输入法直接开打就是了！
+对于双拼和其他输入法的优劣比较你只需Google之便是了，而我个人感觉，也许双拼的好并不在于少敲击那么几下键盘，而是在于那种固定敲击两下的节奏感吧。。。&lt;/p&gt;
+
+&lt;p&gt;贴一个知乎的问答: &lt;a href=&quot;https://www.zhihu.com/question/20555958&quot;&gt;双拼输入法对比全拼输入法效率更高吗&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section-4&quot;&gt;方案选择&lt;/h4&gt;
+&lt;p&gt;我们已经知道，双拼输入法将复合声母和韵母简化为一个字母，但究竟该用哪个字母对应这些复合的声母韵母，并没有一个统一的规定。因此，坊间流传着各种各样的双拼方案，下面的列表就是其中具有代表性的一些（键位对应可以在网上搜到）：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;微软双拼（以及类似的搜狗双拼）&lt;/li&gt;
+  &lt;li&gt;自然码双拼&lt;/li&gt;
+  &lt;li&gt;小鹤双拼&lt;/li&gt;
+  &lt;li&gt;紫光双拼&lt;/li&gt;
+  &lt;li&gt;拼音加加（双拼）&lt;/li&gt;
+  &lt;li&gt;智能 ABC （双拼）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;各双拼方案在输入效率上会有细微的差异，但基本可以忽略不计。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+</description>
+        <pubDate>Thu, 30 Jun 2016 00:00:00 +0800</pubDate>
+        <link>http://EthanPen.github.io/2016/06/30/2016.06.30-and-DoublePinyin/</link>
+        <guid isPermaLink="true">http://EthanPen.github.io/2016/06/30/2016.06.30-and-DoublePinyin/</guid>
+        
+        <category>Life</category>
+        
+        <category>SundrySkills</category>
+        
+        
+      </item>
     
       <item>
         <title>Python Challenge</title>
@@ -16,11 +863,22 @@
 To read the pre-Level of PythonChallenge at this site: &lt;a href=&quot;http://jnstar.iteye.com/admin/blogs/2214796&quot;&gt;Ethan.Penx Blog in ITeye&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 
+&lt;h4 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h4&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#Level 7&quot;&gt;Level 7&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Level 8&quot;&gt;Level 8&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Level 9&quot;&gt;Level 9&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;p id=&quot;Level 7&quot;&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;level-7&quot;&gt;Level 7&lt;/h2&gt;
 
 &lt;p&gt;&lt;strong&gt;Riddle Page L7:&lt;/strong&gt; &lt;a href=&quot;http://www.pythonchallenge.com/pc/def/oxygen.html&quot;&gt;http://www.pythonchallenge.com/pc/def/oxygen.html&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;The title of the page is “smarty”, and there’s a picture which with a strip of greyscale squares across the middle is in the top of the page. At the sight of the clue “smarty”, what coming to my mind is the &lt;strong&gt;Python Module&lt;/strong&gt; named &lt;strong&gt;Smartypants&lt;/strong&gt;, but, sadly, there’s nothing I can get through the &lt;strong&gt;smartypants.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The title of the page is “smarty”, and there’s a picture  with a strip of greyscale squares across the middle which is at the top of the page. At the sight of the clue “smarty”, what occurs to me is a &lt;strong&gt;Python Module&lt;/strong&gt; named &lt;strong&gt;Smartypants&lt;/strong&gt;, but sadly, there’s nothing I can get by &lt;strong&gt;smartypants.&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Mabye the clue is in those greyscale squares, with the greyscale level (range from 0-255) encoding something in it, whatever, try it first.&lt;/p&gt;
 
@@ -60,9 +918,9 @@ integrity
 &lt;p&gt;So, change the &lt;strong&gt;url&lt;/strong&gt; (&lt;strong&gt;oxygen –&amp;gt; integrity&lt;/strong&gt;) to getting Level 8:
 &lt;strong&gt;Riddle Page L8:&lt;/strong&gt; &lt;a href=&quot;http://www.pythonchallenge.com/pc/def/integrity.html&quot;&gt;http://www.pythonchallenge.com/pc/def/integrity.html&lt;/a&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;relative&quot;&gt;Relative&lt;/h4&gt;
+&lt;h3 id=&quot;the-related&quot;&gt;The Related&lt;/h3&gt;
 
-&lt;p&gt;There’s something to help understanding all the Image stuff as following:&lt;/p&gt;
+&lt;p&gt;There’s something to help understand all the Image stuff as following:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -95,7 +953,68 @@ Returns:	The pixel value. If the image is a multi-layer image, this method retur
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;– Continuing&lt;/strong&gt;&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p id=&quot;Level 8&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;level-8&quot;&gt;Level 8&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Riddle Page L8:&lt;/strong&gt; &lt;a href=&quot;http://www.pythonchallenge.com/pc/def/integrity.html&quot;&gt;http://www.pythonchallenge.com/pc/def/integrity.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Well, there’s a picture with a bee flying up the flower, and the clues “Where is the missing link?” at the bottom of the page, clicked the picture takes us to a &lt;strong&gt;password-protected&lt;/strong&gt; page for area “inflate”. And the title of this page is “working hard?”.  Seriously? working hard? I’m totally confused…&lt;/p&gt;
+
+&lt;p&gt;Let’s do it the old ways, check the source code of this page, it’s showed me a series of messy strings, Unfortunately, I can’t figure out what types of coding it used, neither encoding it.&lt;/p&gt;
+
+&lt;p&gt;Fine, google the messy strings, turns out, it’s brz2 compressed file format.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; un = &quot;BZh91AY&amp;amp;SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07&amp;lt;]\xc9\x14\xe1BA\x06\xbe\x084&quot;
+&amp;gt;&amp;gt;&amp;gt; pw = &#39;BZh91AY&amp;amp;SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13&amp;lt;]\xc9\x14\xe1BBP\x91\xf08&#39;
+
+&amp;gt;&amp;gt;&amp;gt; import bz2
+&amp;gt;&amp;gt;&amp;gt; bz2.decompress(un)
+&#39;huge&#39;
+&amp;gt;&amp;gt;&amp;gt; bz2.decompress(pw)
+&#39;file&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So, entered the username&amp;amp;password come to the Level 9: &lt;a href=&quot;http://www.pythonchallenge.com/pc/return/good.html&quot;&gt;http://www.pythonchallenge.com/pc/return/good.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;BTW, here’s the hint comes from official solutions:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You see a bee in the picture. She sounds busy too. What could that mean?
+bee? busy. busy? busy too ? bz2?
+The hint in the password box says “inflate” so you consider to try to decompress the strings.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;the-related-1&quot;&gt;THe Related&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://wiki.pythonchallenge.com/index.php?title=Level8:Main_Page&quot;&gt;Level8:Main Page
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;functions-1&quot;&gt;functions:&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;bz2.compress(data[, compresslevel])&lt;/strong&gt;&lt;br /&gt;
+Compress data in one shot. If you want to compress data sequentially, use an instance of BZ2Compressor instead. The compresslevel parameter, if given, must be a number between 1 and 9; the default is 9.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;bz2.decompress(data)&lt;/strong&gt;&lt;br /&gt;
+Decompress data in one shot. If you want to decompress data sequentially, use an instance of BZ2Decompressor instead.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p id=&quot;Level 9&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;level-9&quot;&gt;Level 9&lt;/h2&gt;
+
+&lt;p&gt;**Riddle Page Level 9: **&lt;a href=&quot;http://www.pythonchallenge.com/pc/return/good.html&quot;&gt;http://www.pythonchallenge.com/pc/return/good.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;—— To be continue…&lt;/strong&gt;&lt;/p&gt;
 
 </description>
         <pubDate>Sat, 25 Jun 2016 00:00:00 +0800</pubDate>

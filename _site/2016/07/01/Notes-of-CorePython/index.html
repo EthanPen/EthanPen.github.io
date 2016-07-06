@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="坐观垂钓者,徒有羡鱼情.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>Notes of Core Python Programming, 2nd edition - </title>
+
+    <link rel="canonical" href="http://EthanPen.github.io/2016/07/01/Notes-of-CorePython/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Ethan.Penx Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/inPost/NotesofCorePython.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/inPost/NotesofCorePython.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                        
+                    </div>
+                    <h1>Notes of Core Python Programming, 2nd edition</h1>
+                    
+                    
+                    <h2 class="subheading"> " Python is an elegant and robust programming language ?"</h2>
+                    
+                    <span class="meta">Posted by Ethan on July 1, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <ul>
+  <li><a href="#Python Objects">Python Objects</a></li>
+  <li><a href="#Numbers">Numbers</a></li>
+  <li><a href="#Mapping and Set Types">Mapping and Set Types</a></li>
+  <li><a href="#Functions and Functional Programming">Functions and Functional Programming</a></li>
+</ul>
+
+<p id="Python Objects"></p>
+
+<h2 id="python-objects">Python Objects</h2>
+<hr />
+
+<h5 id="section">工厂函数</h5>
+<p>就是指那些内建函数都是类对象，当调用他们时，实际上是创建了一个类实例。</p>
+
+<p>#####变量定义</p>
+
+<ul>
+  <li>
+    <p>显示声明</p>
+
+    <p>C: 变量声明必须位于代码块最开始，且在任何其他语句之前。<br />
+ C++、Java: 允许”随时随地”声明变量，不过仍必须在变量被使用前声明变量的名字和类型。</p>
+  </li>
+  <li>
+    <p>隐式</p>
+
+    <p>Python: 变量在第一次被赋值时自动声明。Python 是一种解释性语言，在创建（也就是赋值时），解释器会根据语法和右侧的操作数来决定新对象的类型。在创建对象后，一个该对象的应用会被赋值给左侧的变量。</p>
+  </li>
+</ul>
+
+<h5 id="section-1">内存分配</h5>
+
+<p>为变量分配内存时，是在借用系统资源，在用完之后，应该释放借用的系统资源。Python 解释器承担了此任务。</p>
+
+<h5 id="section-2">引用计数</h5>
+
+<p>Python 使用引用计数技术来保持追踪内存中的对象。当对象被创建时，便创建一个引用计数（每个对象各有多少个引用），当对象不在需要时（也即引用计数变为0时），它被垃圾回收。</p>
+
+<h5 id="dir-and-del">dir() and del</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; print dir.__doc__
+dir([object]) -&gt; list of strings
+
+If called without an argument, return the names in the current scope.
+Else, return an alphabetized list of names comprising (some of) the attributes
+of the given object, and of attributes reachable from it.
+If the object supplies a method named __dir__, it will be used; otherwise
+the default dir() logic is used and returns:
+  for a module object: the module's attributes.
+  for a class object:  its attributes, and recursively the attributes
+    of its bases.
+  for any other object: its attributes, its class's attributes, and
+    recursively the attributes of its class's base classes.
+
+&gt;&gt;&gt; dir()
+['__builtins__', '__doc__', '__name__', '__package__']
+&gt;&gt;&gt; import sys 
+&gt;&gt;&gt; dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'sys']
+&gt;&gt;&gt; del sys
+&gt;&gt;&gt; dir()
+['__builtins__', '__doc__', '__name__', '__package__']
+</code></pre>
+</div>
+
+<h5 id="reduce-the-number-of-lookups">Reduce the Number of Lookups</h5>
+
+<p>To actually get the integer type object, the interpreter has to look up the <strong>types</strong> name first, and then within that module’s dictionary, find <strong>IntType</strong>. By using from-import, you can take away one lookup:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>from types import IntType
+if type(num) == IntType ...
+</code></pre>
+</div>
+
+<p id="Numbers"></p>
+
+<h2 id="numbers">Numbers</h2>
+
+<h5 id="type-categorized-by-the-update-model">Type Categorized by the Update Model</h5>
+
+<table border="1">
+<tr>
+<th>Update Model Category</th>
+<th>Python Types That Fit Category</th>
+</tr>
+<tr>
+<td>Mutable</td>
+<td>List, dictionaries</td>
+</tr>
+<tr>
+<td>Immutable</td>
+<td>Numbers, strings, tuples</td>
+</tr>
+</table>
+
+<p>Rather than referring to the original objects, new objects with the new values were allocated and (re)assigned to the original varibale names, and the old objects were garbage-collected. One can confirm this by using the <strong>__id()__</strong> <strong>BIF</strong>(build-in function) to compare object identities before and after such assignments.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; dir()
+['__builtins__', '__doc__', '__name__', '__package__', 'foo', 'types', 'x']
+&gt;&gt;&gt; x
+1
+&gt;&gt;&gt; id(x)
+140457926481800
+&gt;&gt;&gt; x += 1
+&gt;&gt;&gt; id(x)
+140457926481776
+
+# a and b referring the same ...
+&gt;&gt;&gt; a = 10
+&gt;&gt;&gt; b = 10
+&gt;&gt;&gt; a is b
+True
+&gt;&gt;&gt; id(a), id(b)
+(140309388376016, 140309388376016)
+
+&gt;&gt;&gt; e = 10.0
+&gt;&gt;&gt; f = 10.0
+&gt;&gt;&gt; e is f
+False
+&gt;&gt;&gt; id(e), id(f)
+(140309388384736, 140309388384760)
+
+&gt;&gt;&gt; s = 0.0
+&gt;&gt;&gt; for i in range(10): 
+...     s += 0.1
+... 
+&gt;&gt;&gt; s
+0.9999999999999999	
+&gt;&gt;&gt; print s
+1.0
+</code></pre>
+</div>
+
+<p><strong>Notice</strong> how for each change, the ID for the list remained the same.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; list
+['this', 5, 'list']
+&gt;&gt;&gt; id(list)
+4303214496
+&gt;&gt;&gt; list[0] = 'list'
+&gt;&gt;&gt; list
+['list', 5, 'list']
+&gt;&gt;&gt; id(list)
+4303214496
+&gt;&gt;&gt; 
+</code></pre>
+</div>
+
+<p><strong>Factory functions</strong>, just means that those objects are now classes, and when you “call” them, you are just creating an instance of that class.</p>
+
+<p><strong>Compare</strong></p>
+
+<ul>
+  <li><strong>int()：</strong> chops off the decimal point and everything after.  直接截去小数部分（返回值为整型）</li>
+  <li><strong>floor()：</strong> rounds you to the next smaller integer, i.e., the next integer moving in a negative direction(toward the left on the number line).  得到最接近原数但小于原数的整型。</li>
+  <li>
+    <p><strong>round():</strong> (round zero digits) rounds you to the nearest integer period.  得到最接近原数的整型。</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  &gt;&gt;&gt; print hex.__doc__
+  hex(number) -&gt; string
+	
+  Return the hexadecimal representation of an integer or long integer.
+  &gt;&gt;&gt; print oct.__doc__
+  oct(number) -&gt; string
+	
+  Return the octal representation of an integer or long integer.
+  &gt;&gt;&gt; 
+  &gt;&gt;&gt; hex(255)
+  '0xff'
+  &gt;&gt;&gt; oct(255)
+  '0377'
+
+  &gt;&gt;&gt; print chr.__doc__
+  chr(i) -&gt; character
+	
+  Return a string of one character with ordinal i; 0 &lt;= i &lt; 256.
+  &gt;&gt;&gt; print ord.__doc__
+  ord(c) -&gt; integer
+	
+  Return the integer ordinal of a one-character string.
+  &gt;&gt;&gt; chr(99)
+  'c'
+  &gt;&gt;&gt; ord('d')
+  100
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<h2 id="sequences-strings-lists-and-tuples">Sequences: strings, Lists, and Tuples</h2>
+
+<p>Sequence type all share the same access model: ordered set with sequentially indexed offsets to get to each element. Multiple elements may be selected by using the slice operators.</p>
+
+<h5 id="repetition">Repetition</h5>
+
+<p>The repetition operator is useful when consecutive copies of sequence elements are desired. The syntax for using the repetition operator is as follows:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#sequence * copies_int
+&gt;&gt;&gt; '*' * 40
+'****************************************'
+&gt;&gt;&gt; 'what!' * 4
+'what!what!what!what!'
+</code></pre>
+</div>
+
+<p>The number of copies, copies_int, must be an integer. As with the concatenation operator, the object returned is newly allocated to hold the contents of the multiply replicated objects.</p>
+
+<h5 id="format-operator-">Format Operator (%)</h5>
+
+<p><img class="shadow" src="/img/inPost/CorePython-formatOperator.png" width="280" /></p>
+
+<h5 id="special-features-of-lists">Special Features of Lists</h5>
+
+<p>** Cerating Other Data Structures Using Lists **</p>
+
+<ul>
+  <li><strong>Stack:</strong> A last-in-first-out <strong>(LILO)</strong> data structure.</li>
+  <li><strong>Queue:</strong> A first-in-first-out <strong>(FIFO)</strong> data structure, which works like a bank teller line. The first person in line is the first one served. New elements join by being “enqueued” at the end of the line, and elements are removed from the front by being “dequeued.”</li>
+  <li><strong>Tuples:</strong> Tuples are another container type extremely similar in nature to lists. The only visible difference between tuples and lists is that tuples use parentheses and lists use square brackets. and Tuples are immutable, Because of this, tuples can do something that lists cannot do…be a dictionary key. Tuples are also the default when dealing with a group of objects.</li>
+</ul>
+
+<p>Sidle-Element Tuples: to place a trailing comma (,) after the first element to indicate that this is a tuple and not a grouping.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; type( ('xyz') )
+&lt;type 'str'&gt;
+&gt;&gt;&gt; type( ('xyz',) )
+&lt;type 'tuple'&gt;
+</code></pre>
+</div>
+
+<h5 id="dictionary-keys">Dictionary Keys</h5>
+
+<p>Immutable objects have values that cannot be changed. That means that they will always hash to the same value. This is the requirement for an object being valid dictionary key. As we will find out in the next chapter, keys must be washable objects, and tuples meet that criteria. Lists are not eligible.</p>
+
+<h5 id="lists--tuples">Lists &amp; Tuples</h5>
+
+<p><strong>list()</strong> and <strong>tuple()</strong> are functions that allow you to create a tuple from a list and vice versa( vice versa means ‘反之亦然’). When you have a tuple and want a list because you need to update its objects, the <strong>list()</strong> function suddenly becomes your best buddy. When you have a list and want to pass it into a function, perhaps <strong>API</strong>, and you do not want anyone to mess with the data, the <strong>tuple()</strong> function comes in quite useful.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; tuple([1, 2, 3])
+(1, 2, 3)
+&gt;&gt;&gt; list((4, 5, 6))
+[4, 5, 6]
+</code></pre>
+</div>
+
+<p><strong>Size</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>a = tuple(range(1000))
+b = list(range(1000))
+
+a.__sizeof__() # 8024
+b.__sizeof__() # 9088
+</code></pre>
+</div>
+
+<p>Due to the smaller size of a tuple operation with it a bit faster but not that much to mention about until you have a huge amount of elements.
+Permitted operations</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>b    = [1,2]   
+b[0] = 3       # [3, 2]
+
+a    = (1,2)
+a[0] = 3       # Error
+sxdcfm, that also mean that you can't delete element or sort tuple. At the same time you could add new element to both list and tuple with the only difference that you will change id of the tuple by adding element
+
+a     = (1,2)
+b     = [1,2]  
+
+id(a)          # 140230916716520
+id(b)          # 748527696
+
+a   += (3,)    # (1, 2, 3)
+b   += [3]     # [1, 2, 3]
+
+id(a)          # 140230916878160
+id(b)          # 748527696
+</code></pre>
+</div>
+
+<p><strong>Usage</strong><br />
+You can’t use list as a dictionary identifier</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>a    = (1,2)
+b    = [1,2] 
+
+c = {a: 1}     # OK
+c = {b: 1}     # Error
+</code></pre>
+</div>
+
+<h5 id="copying-python-objects-and-shallow-and-deep-copies">Copying python objects and Shallow and Deep Copies</h5>
+
+<p>A shallow copy is where only references are copied…no new objects are made! If you also want copies of the objects(including recursively if you have container objects in containers), you will need to learn about deep copies.</p>
+
+<ul>
+  <li><a href="http://www.python-course.eu/deep_copy.php">Shallow and Deep Copies</a></li>
+</ul>
+
+<p>The shallow and deep copy operations that we just described are found in the <strong>copy</strong> module. There are really only two functions to use from this module: <strong>copy()</strong> creates shallow copy, and <strong>deepcopy()</strong> creates a deep copy.</p>
+
+<ul>
+  <li><a href="https://docs.python.org/2/library/copy.html">htts://docs.python.org/2/library/copy.html</a></li>
+</ul>
+
+<h5 id="append">Append</h5>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; import string
+&gt;&gt;&gt; string.letters
+'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+&gt;&gt;&gt; string.digits
+'0123456789'
+
+&gt;&gt;&gt; import keyword
+&gt;&gt;&gt; keyword.kwlist
+['and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'exec', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'not', 'or', 'pass', 'print', 'raise', 'return', 'try', 'while', 'with', 'yield']
+&gt;&gt;&gt; 
+</code></pre>
+</div>
+
+<p id="Mapping and Set Types"></p>
+
+<h2 id="mapping-and-set-types">Mapping and Set Types</h2>
+
+<p>Dictionary may be created using a very convenient built-in-method for creating a “default” dictionary whose elements all have the same value(default to <strong>None</strong> if not given), <strong>fromkeys()</strong>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; ddict = {'x': 'hello', 'y': 'dict'}
+&gt;&gt;&gt; fdict = {}.fromkeys(('m', 'n'), 8)
+&gt;&gt;&gt; edict = {}.fromkeys(('foo', 'bar'))
+&gt;&gt;&gt; print ddict, fdict, edict
+{'y': 'dict', 'x': 'hello'} {'m': 8, 'n': 8} {'foo': None, 'bar': None}
+</code></pre>
+</div>
+
+<p><strong>Core TIps</strong></p>
+
+<p>Because <strong>dict()</strong> is now a type and factory function, overriding it may cause you headaches and potential bugs. The interpreter will allow such overriding-hey, it thinks you seem smart and look like you know what you are doing! So be careful. Do <strong>NOT</strong> use variables named after built-in types like: <strong>dict, list, file, bool, str, input, Or len!</strong></p>
+
+<p><strong>How dictionaries are compared</strong></p>
+
+<p><img class="shadow" src="/img/inPost/CorePython-dictionaryCompare.png" width="340" /></p>
+
+<h2 id="functions-and-functional-programming">Functions and Functional Programming</h2>
+
+<ul>
+  <li>
+    <p>Decorator</p>
+
+    <p><a href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001386819879946007bbf6ad052463ab18034f0254bf355000">http://www.liaoxuefeng.com</a></p>
+
+    <p><a href="http://thecodeship.com/patterns/guide-to-python-function-decorators/">Guide to Python Function Decorators</a></p>
+  </li>
+</ul>
+
+<h5 id="non-keyword-variable-arguments-tuple">Non-keyword Variable Arguments (<strong>Tuple</strong>)</h5>
+
+<p>A **TypeError exception is generated whenever an incorrect number of arguments is given in the function invocation. By adding a variable argument list variable at the end, we can handle the situation when more than enough arguments are passed to the function because all the extra(non-keyword) ones will be added to the variable argument tuple.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; def tupleVariable(arg1, arg2='defaultB', *theRest):
+...     'display regular args and non-keyword variable args'
+...     print 'format arg 1: ', arg1
+...     print 'format arg 2: ', arg2
+...     for eachXtrArg in theRest:
+...             print 'another arg: ', eachXtrArg
+... 
+&gt;&gt;&gt; tupleVariable('abc')
+format arg 1:  abc
+format arg 2:  defaultB
+&gt;&gt;&gt; tupleVariable(23, 4.56)
+format arg 1:  23
+format arg 2:  4.56
+&gt;&gt;&gt; tupleVariable('abc', 123, 'xyz', 456.789)
+format arg 1:  abc
+format arg 2:  123
+another arg:  xyz
+another arg:  456.789
+</code></pre>
+</div>
+
+<h5 id="keyword-variable-arguments-dictionary">Keyword Variable Arguments (<strong>Dictionary</strong>)</h5>
+
+<p>In the case where we have a variable number or extra set of keyword arguments, these are placed into a dictionary where the “Keyword” argument variable names are the keys, and the arguments are their corresponding values. A double asterisk (**) is used.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; def dictVarArgs(arg1, arg2='defaultB', **theRest):
+...     'display 2 regular args and keyword variable args'
+...     print 'format arg1: ', arg1
+...     print 'format arg2: ', arg2
+...     for eachXtrArg in theRest.keys():
+...             print 'Xtr arg %s: %s' %  (eachXtrArg, str(theRest[eachXtrArg]))
+... 
+&gt;&gt;&gt; dictVarArgs(1220, 740.3, c='grail')
+format arg1:  1220
+format arg2:  740.3
+Xtr arg c: grail
+&gt;&gt;&gt; dictVarArgs(arg2='tales', c='grail', d=123, arg1='mystery')
+format arg1:  mystery
+format arg2:  tales
+Xtr arg c: grail
+Xtr arg d: 123
+&gt;&gt;&gt; dictVarArgs('one', d=10, c='grail', e='zoo', men=(123, 'fuck'))
+format arg1:  one
+format arg2:  defaultB
+Xtr arg c: grail
+Xtr arg men: (123, 'fuck')
+Xtr arg e: zoo
+Xtr arg d: 10
+</code></pre>
+</div>
+
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/06/30/2016.06.30-and-DoublePinyin/" data-toggle="tooltip" data-placement="top" title="2016-06-30 and Double Pinyin">
+                        Previous<br>
+                        <span>2016-06-30 and Double Pinyin</span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li class="next">
+                        <a href="/2016/07/01/Python-Module-RE/" data-toggle="tooltip" data-placement="top" title=" Python Module RE">
+                        Next<br>
+                        <span> Python Module RE</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2016/07/01/Notes-of-CorePython"
+                        data-title="Notes of Core Python Programming, 2nd edition"
+                        data-url="http://EthanPen.github.io/2016/07/01/Notes-of-CorePython/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                                <a href="/tags/#Life" title="Life" rel="2">
+                                    Life
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#Python" title="Python" rel="4">
+                                    Python
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>INTERESTS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="#">CS</a></li>
+                    
+                        <li><a href="#">ENGLISH</a></li>
+                    
+                        <li><a href="#">PHOTOGRAPH</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'EthanPen';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/1692667524">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/ethan.pen.96">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/EthanPen">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ethan.Penx Blog 2016
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-79852829-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'f3ecddde90c2a58139e08a12aa20af0f';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+</body>
+
+</html>
