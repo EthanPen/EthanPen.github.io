@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="坐观垂钓者,徒有羡鱼情.">
+    <meta name="keyword"  content="">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title> Superimposed Picture  - </title>
+
+    <link rel="canonical" href="http://EthanPen.github.io/2016/07/21/Superimposed-Picture/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Ethan.Penx Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/inPost/PythonChallenge.png" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/inPost/PythonChallenge.png')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                        
+                    </div>
+                    <h1> Superimposed Picture </h1>
+                    
+                    
+                    <h2 class="subheading"> "Just for fun. 叠加与拼接图片！"</h2>
+                    
+                    <span class="meta">Posted by Ethan on July 21, 2016</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h2 id="section">背景须知</h2>
+
+<h3 id="section-1">照片模式</h3>
+
+<table>
+<tr>
+<td>1</td>
+<td>1位像素，黑和白，存成8位的像素</td>
+</tr>
+<tr>
+<td>L</td>
+<td>8位像素，黑和白</td>
+</tr>
+<tr>
+<td>P</td>
+<td>8位像素，使用调色板映射到任何其他模式</td>
+</tr>
+<tr>
+<td>RGB</td>
+<td>3 x 8 位像素，真彩</td>
+</tr>
+<tr>
+<td>RGBA</td>
+<td>4 x 8 位像素，真彩 + 透明通道</td>
+</tr>
+<tr>
+<td>CMYK</td>
+<td>4 x 8 位像素，颜色隔离</td>
+</tr>
+<tr>
+<td>YCbCR</td>
+<td>3 x 8 位像素， 彩色视频格式</td>
+</tr>
+<tr>
+<td>I</td>
+<td>32 位整型像素</td>
+</tr>
+<tr>
+<td>F</td>
+<td>32 位浮点型像素</td>
+</tr>
+</table>
+
+<p>常见的照片格式中 .png 属于 RGBA 模式，而 .jpg 格式属于 RGB 模式，如下代码所示。<br />
+RGB 分别代表红、绿、蓝三个通道的颜色，这个标准几乎包括人类所能感知的所有颜色。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; import os, Image
+&gt;&gt;&gt; lsd = os.listdir('.')
+&gt;&gt;&gt; lsd
+['.DS_Store', '2048.py', 'ascii.py', 'ascii_dora.png', 'createNecImg_0.5_.png', 'model2048.py', 'output.txt', 'test.png', 'trapic.py', 'utput.txt']
+&gt;&gt;&gt; im = Image.open(os.getcwd() + '/' + lsd[-3])
+&gt;&gt;&gt; im
+&lt;PngImagePlugin.PngImageFile image mode=RGBA size=1485x2110 at 0x109B718C0&gt;
+&gt;&gt;&gt; 
+
+# example of some color
+[0,0,0] — black
+[255,0,0] — Red
+[0,255,0] — green
+[0,0,255] — blue
+[255,255,255] — white
+</code></pre>
+</div>
+
+<h4 id="section-2">两张照片层叠的两种方式</h4>
+
+<ol>
+  <li>
+    <p>两张照片同一点的像素按照一定比例叠加。假设两张照片同一点的像素分别为A、B，则层叠之后该点像素点为: A•alpha + B•(1-alpha)  — (0 &lt; alpha &lt; 1）</p>
+  </li>
+  <li>
+    <p>正片叠底。结果色 = 混合色 * 基色 / 255，PS中也采用这种方式； 正片叠底的特点： 明度变化：混合色不会大于255，故结果色一定小于1，混合模式之后必定比基色暗。0为黑色，若混合两色中有黑色，混合之后必定是黑色。若有白色，则混合色为另外一色的原色。故正片叠底可以改变非黑即白，处于灰度区间的明度，变黑。可以采用操作像素点，提高像素点的亮度。</p>
+  </li>
+</ol>
+
+<h4 id="section-3">用到的库</h4>
+
+<p><strong>PIL: Python Imaging Library</strong></p>
+
+<ul>
+  <li><a href="http://pillow.readthedocs.io/en/3.1.x/index.html">pillow</a></li>
+  <li><a href="http://www.pythonware.com/products/pil/">Python Imaging Library (PIL)</a></li>
+</ul>
+
+<p><strong>Numpy</strong></p>
+
+<ul>
+  <li><a href="http://cs231n.github.io/python-numpy-tutorial/">Python Numpy tutorials</a></li>
+  <li><a href="http://www.numpy.org/">Numpy</a></li>
+</ul>
+
+<h2 id="code">Code</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>#coding: utf-8
+
+from __future__ import division
+import PIL
+import Image
+import numpy
+import os
+import random
+import numexpr
+import time
+import ImageFont, ImageDraw
+STAG = time.time()
+
+# W_num: how many image in a row
+# H_num: how many image in a hor
+# W_size: width of an image
+# H_size: height of an image
+# root: root path of the script
+
+root = "/Users/xing/Desktop/resoures/"
+W_num = 13
+H_num = 13
+W_size = 640
+H_size = 360
+
+# aval: stored all of the image
+aval = []
+alpha = 0.5
+
+def getAllphotos():
+# 	root = os.getcwd() + "/"
+	src = root + "photos/"
+	for i in os.listdir(src):
+		if os.path.splitext(src + i)[-1] == ".png":
+			aval.append(src + i)
+			
+			
+
+
+# formating the image size 
+def transfer(img_path, dst_width, dst_height):
+	im = Image.open(img_path)
+	if im.mode != "RGBA":
+		im = im.convert("RGBA")
+	s_w, s_h = im.size
+	
+	if s_w &lt; s_h:
+		im = im.rotate(90)
+	
+	STA = time.time()
+	resized_img = im.resize((dst_width, dst_height))	
+# 	print "Transfer Func Time %s" % (time.time()-STA)
+# 	print numpy.array(resized_img)[:dst_height, :dst_width]
+	
+	return numpy.array(resized_img)[:dst_height, :dst_width]
+		
+		
+# create and save a new image
+def createNevImg():
+	iW_size = W_num * W_size
+	iH_size = H_num * H_size
+		
+	I = numpy.array(transfer(root + "Ethan.png", iW_size, iH_size))
+	I = numexpr.evaluate("""I * (1 - alpha)""")
+	
+	for i in range(W_num):
+		for j in range(H_num):
+			SH = I[(j * H_size):((j + 1) * H_size), (i * W_size):((i + 1) * W_size)]
+			STA = time.time()
+			DA = transfer(random.choice(aval), W_size, H_size)
+# 			print "Call Func Time %s" % (time.time()-STA)
+			res = numexpr.evaluate("""SH + DA * alpha""")
+			I[(j * H_size):((j + 1) * H_size), (i * W_size):((i + 1) * W_size)] = res
+	
+	Image.fromarray(I.astype(numpy.uint8)).save("createNecImg_%s_.png" % alpha)
+	
+
+if __name__ == "__main__":
+	getAllphotos()
+	createNevImg()
+
+	print "Total time %s" % (time.time()-STAG)
+</code></pre>
+</div>
+
+<p>本脚本的核心部分</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>def createNevImg():
+	'''
+	'''
+</code></pre>
+</div>
+
+<p>root+’Ethan.png’是要与拼接之后的照片进行层叠的照片. 利用numpy.array的方法将其转换成矩阵I, I的大小为(W_num•W_size, H_num•H_size)，是伸缩照片生成矩阵的W_num•H_num倍; 调用numexpr.evaluate方法，将矩阵中每个元素都乘以(1-alpha).</p>
+
+<p>接下来的双重遍历便是具体拼接的实现。<br />
+由于矩阵I的规模是伸缩照片生成矩阵的 W_num•H_num倍，所以我们从左向右，从上向下依次取(W_size, H_size)大小的矩阵SH</p>
+
+<p>计算SH+DA*alpha，并将结果放回SH在I矩阵中位置。这里是将两张照片中相同一点的像素分别乘以(1-alpha)、alpha，然后相加，如此两个照片便层叠在一块。</p>
+
+<p>alpha的取值可以自己设置，这里设置的是0.5。且此处选择的层叠的方法是第一种，将两张照片同一点的像素按照一定比例想加，这里选择的是alpha=0.5。
+调用fromarray方法将矩阵I转为图片对象，并保存为createNevImage_0.5_.png，照片如下图所示。</p>
+
+<p>将本文的主题图用做了进行层叠的照片，运行代码得到如下效果图。用作拼接的是我 iPad 的图库中部分图片。</p>
+
+<p><img class="shadow" src="/img/inPost/createNecImg_0.5_.png" width="820" /></p>
+
+<h2 id="the-related">The Related</h2>
+
+<h4 id="numexpr">numexpr</h4>
+
+<p><a href="https://pypi.python.org/pypi/numexpr">numexpr 2.6.1</a></p>
+
+<h4 id="ospathsplitextpath">os.path.splitext(path)</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>os.path.splitext(path)
+	Split the pathname path into a pair (root, ext) such that root + ext == path, and ext is empty or begins with a period and contains at most one period. Leading periods on the basename are ignored; splitext('.cshrc') returns ('.cshrc', '').
+	
+	Changed in version 2.6: Earlier versions could produce an empty root when the only period was the first character.
+	
+
+&gt;&gt;&gt; import os
+&gt;&gt;&gt; lsd = os.listdir('.')
+&gt;&gt;&gt; lsd[1][-4:]
+'.jpg'
+&gt;&gt;&gt; lsd[10][-4:]
+'.png'
+&gt;&gt;&gt; imPath = os.getcwd() + '/'
+&gt;&gt;&gt; imPath
+'/Users/xing/Desktop/resoures/photos/Image/'
+&gt;&gt;&gt; os.path
+&lt;module 'posixpath' from '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/posixpath.pyc'&gt;
+&gt;&gt;&gt; type(os.path)
+&lt;type 'module'&gt;
+&gt;&gt;&gt; os.path.splitext(imPath + lsd[1])
+('/Users/xing/Deskt	op/resoures/photos/Image/2014-11-15 102434', '.jpg')
+&gt;&gt;&gt; os.path.splitext(imPath + lsd[1])[-1]
+'.jpg'
+&gt;&gt;&gt;
+</code></pre>
+</div>
+
+<h4 id="pilimagefrom">PIL.Image.from</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>PIL.Image.fromarray(obj, mode=None)
+Creates an image memory from an object exporting the array interface (using the buffer protocol).
+
+If obj is not contiguous, then the tobytes method is called and frombuffer() is used.
+
+Parameters:	
+obj – Object with array interface
+mode – Mode to use (will be determined from type if None) See: Modes.
+Returns:	
+An image object.
+</code></pre>
+</div>
+
+
+
+                <ul class="pager">
+                    
+                    <li class="previous">
+                        <a href="/2016/07/10/Convert-the-Picture-to-Ascii/" data-toggle="tooltip" data-placement="top" title="Convert the Picture to Ascii">
+                        Previous<br>
+                        <span>Convert the Picture to Ascii</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+
+
+                
+                <!-- 多说评论框 start -->
+                <div class="comment">
+                    <div class="ds-thread"
+                        data-thread-key="/2016/07/21/Superimposed-Picture"
+                        data-title=" Superimposed Picture "
+                        data-url="http://EthanPen.github.io/2016/07/21/Superimposed-Picture/" >
+                    </div>
+                </div>
+                <!-- 多说评论框 end -->
+                
+
+                
+
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                        
+                            
+                                <a href="/tags/#Life" title="Life" rel="2">
+                                    Life
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                                <a href="/tags/#Python" title="Python" rel="6">
+                                    Python
+                                </a>
+                            
+                        
+                            
+                        
+                            
+                        
+                            
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>INTERESTS</h5>
+                <ul class="list-inline">
+                    
+                        <li><a href="#">CS</a></li>
+                    
+                        <li><a href="#">ENGLISH</a></li>
+                    
+                        <li><a href="#">PHOTOGRAPH</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User by Hux
+    var _user = 'EthanPen';
+
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("http://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'always',
+          placement: 'right',
+          icon: '#'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    
+                    <li>
+                        <a target="_blank" href="http://weibo.com/1692667524">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/ethan.pen.96">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/EthanPen">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Ethan.Penx Blog 2016
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/    
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-79852829-1';
+    var _gaDomain = 'auto';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+<!-- Baidu Tongji -->
+
+<script>
+    // dynamic User by Hux
+    var _baId = 'f3ecddde90c2a58139e08a12aa20af0f';
+
+    // Originial
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + _baId;
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+
+
+</body>
+
+</html>

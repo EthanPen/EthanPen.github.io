@@ -323,6 +323,9 @@ Because **dict()** is now a type and factory function, overriding it may cause y
 
 <img class="shadow" src="/img/inPost/CorePython-dictionaryCompare.png" width="340"> 
 
+
+<p id="Functions and Functional Programming"></p>
+
 ## Functions and Functional Programming
 
 
@@ -385,14 +388,51 @@ In the case where we have a variable number or extra set of keyword arguments, t
 	Xtr arg e: zoo
 	Xtr arg d: 10
 	
+<p id="Modules"></p>
+
+## Modules
+
+####Search Path
+
+	>>> import sys
+	>>> sys.path
+	['', '/Library/Python/2.7/site-packages/virtualenv-15.0.2-py2.7.egg', '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python27.zip', '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7']
+	>>> type(sys.path)
+	<type 'list'>
 
 
+Bearing in mind that is just a list, we can definitely take Liberty with it and modify it at our leisure. If you know of a module you want to import, yet its directory is not in the search path, by all means use the list's **append()** method to add it to the path, like so:
 
+	>>> import os
+	>>> os.getcwd()
+	'/Users/xing'
+	>>> sys.path.append(os.getcwd())
+	>>> sys.path
+	['', '/Library/Python/2.7/site-packages/virtualenv-15.0.2-py2.7.egg', '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python27.zip', '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7', '/Users/xing']
+	
+####Import Modules
 
+It is recommended that all imports happen at the top of Python modules. Furthermore, imports should follow this ordering:
+	
+* Python Standard Library modules
+* Python third party modules
+* Application-specific modules
 
+Separate these groups with an empty line between the imports of these types of modules. This helps ensure that modules are imported in a consistent manner and helps minimize the number of **import** statements required in each of the modules. 
 
+#### Instance Attributes
 
+Being able to create an instance attribute "on-the-fly" is one of the great features of Python classes, initially (but gently) shocking those coming from C++ or Java in which all attributes must be explicitly defined/ declared first.
 
+Python is not only dynamically typed but also allows for such dynamic creation of object attributes during run-time. It is a feature that once used may be difficult to live without. Of course, we should mention to the reader that one much be cautious when creating such attributes.
+
+One pitfall is when such attributes are created in conditional clauses: if you attempt to access such an attribute later on in your code, that attribute may not exist if the flow had not entered that conditional suite. The moral of the story is that Python gives you a new feature you were not used to before, but if you use it, you need to be more careful, too.
+
+####Functions versus methods
+
+Methods are basically functions but tied to a specific class object type. They are defined as part of a class and are executed as part of an instance of that class.
+
+ 
 
 
 
