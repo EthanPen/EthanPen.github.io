@@ -1,12 +1,11 @@
 ---
 layout:     post
-title:      "Python Challenge"
+title:      "Python Challenge (7 - 10)"
 subtitle:   "\" The first programming riddle on the net \" "
 date:       2016-06-25
 author:     "Ethan"
 header-img: "img/inPost/PythonChallenge.png"
 tags:
-    - Python
     - PythonChallenge
     
 ---
@@ -18,6 +17,7 @@ tags:
 1. [Level 7](#Level 7)
 2. [Level 8](#Level 8)
 3. [Level 9](#Level 9)
+4. [Level 10](#Level 10)
 
 ---
 
@@ -138,19 +138,103 @@ Compress data in one shot. If you want to compress data sequentially, use an ins
 * **bz2.decompress(data)**  
 Decompress data in one shot. If you want to decompress data sequentially, use an instance of BZ2Decompressor instead.
 
+---
+
 
 
 <p id="Level 9"></p>
 
 ## Level 9
 
-**Riddle Page Level 9: **[http://www.pythonchallenge.com/pc/return/good.html](http://www.pythonchallenge.com/pc/return/good.html)
+**Riddle Page Level 9: (Uname: huge, Pwd: file)** [http://www.pythonchallenge.com/pc/return/good.html](http://www.pythonchallenge.com/pc/return/good.html)
 
+The title of this page is "connect the dots", and there are a long lists of numbers for "first"&"second" in the source page. Maybe the numbers are the coordinates of dots which join another picture? Just do it.
 
+	MBP-Ethan:TextWrangler xing$ vim pythonchallenge9.py
+	'''
+	copy & paste the "first" and "second"
+	'''
+	MBP-Ethan:TextWrangler xing$ python pythonchallenge9.py 
 
+	# enter python shell
+	>>> from pythonchallenge9 import *
+	>>> len(list1), min(list1), max(list1)
+	(442, 77, 403)
+	>>> len(list2), min(list2), max(list2)
+	(112, 77, 220)
 
+	>>> import Image
+	>>> help(Image.new)
+	new(mode, size, color=0)
+    Create a new image
+	>>> im = Image.new('1', (600, 600), "white")
+	>>> import ImageDraw
+	>>> line1 = zip(list1[0::2], list1[1::2])
+	>>> line2 = zip(list2[0::2], list2[1::2])
+	>>> draw = ImageDraw.Draw(im)
+	>>> draw.line(line1)
+	>>> draw.line(line2)
+	>>> im.show()
 
+A bull showed on the screen.
 
- **------ To be continue...**
+<img class="shadow" src="/img/inPost/PythonChallenge-bull.png" width="320">
+
+Well, same old, changing the url to get to Level10:
+[http://www.pythonchallenge.com/pc/return/bull.html](http://www.pythonchallenge.com/pc/return/bull.html)
+
+#### The Related
+
+##### functions
+
+* **Image.new(mode, size, color) ⇒ image**  
+Creates a new image with the given mode and size. Size
+is given as a (width, height)-tuple, in pixels. The
+color is given as a single value for single-band 
+images, and a tuple for multi-band images (with one 
+value for each band). In 1.1.4 and later, you can also 
+use color names (see the ImageColor module 
+documentation for details) If the color argument is 
+omitted, the image is filled with zero (this usually 
+corresponds to black). If the color is None, the image 
+is not initialised. This can be useful if you’re going 
+to paste or draw things in the image.
+	
+		from PIL import Image
+		im = Image.new("RGB", (512, 512), "white")
+
+* **Draw a Grey Cross Over an Image**
+		
+		import Image, ImageDraw
+
+		im = Image.open("lena.pgm")
+
+		draw = ImageDraw.Draw(im)
+		draw.line((0, 0) + im.size, fill=128)
+		draw.line((0, im.size[1], im.size[0], 0), fill=128)
+		del draw
+
+		# write to stdout
+		im.save(sys.stdout, "PNG")
+
+---
+
+<p id="Level 10"></p>
+
+## Level 10
+
+**Riddle page Level 10**: [http://www.pythonchallenge.com/pc/return/bull.html](http://www.pythonchallenge.com/pc/return/bull.html)
+
+There's a picture of a bull and the clue is "len(a[30]) = ?". Display the source page, and  clicking the href="sequence.txt" get to the another page which is reveals "a = [1, 11, 21, 1211, 111221, ".  Obviously, we're asked to solve the sequence puzzle. 
+
+Type the numbers into the **[Online Encyclopedia of Integer Sequences,](https://oeis.org/search?q=1%2C11%2C21%2C1211%2C111221&language=english&go=Search) (OEIS)**. Turns out, this one is **A005150, "Look and say sequence."**
+
+There's Python code in the OEIS for computing the values of the sequence, but it's simpler to follow the cross-reference for the length of the n-th term to find the sequence **[A005341](https://oeis.org/A005341)**, it gives the length of the 31st term as 5808.
+
+So, here's the url of Level 11:
+[http://www.pythonchallenge.com/pc/return/5808.html](http://www.pythonchallenge.com/pc/return/5808.html)
+
+---
+
 
  

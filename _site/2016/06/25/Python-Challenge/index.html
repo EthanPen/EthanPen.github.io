@@ -10,7 +10,7 @@
     <meta name="keyword"  content="">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title>Python Challenge - </title>
+    <title>Python Challenge (7 - 10) - </title>
 
     <link rel="canonical" href="http://EthanPen.github.io/2016/06/25/Python-Challenge/">
 
@@ -144,12 +144,10 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Python" title="Python">Python</a>
-                        
                         <a class="tag" href="/tags/#PythonChallenge" title="PythonChallenge">PythonChallenge</a>
                         
                     </div>
-                    <h1>Python Challenge</h1>
+                    <h1>Python Challenge (7 - 10)</h1>
                     
                     
                     <h2 class="subheading">" The first programming riddle on the net " </h2>
@@ -182,6 +180,7 @@ To read the pre-Level of PythonChallenge at this site: <a href="http://jnstar.it
   <li><a href="#Level 7">Level 7</a></li>
   <li><a href="#Level 8">Level 8</a></li>
   <li><a href="#Level 9">Level 9</a></li>
+  <li><a href="#Level 10">Level 10</a></li>
 </ol>
 
 <hr />
@@ -322,13 +321,112 @@ Decompress data in one shot. If you want to decompress data sequentially, use an
   </li>
 </ul>
 
+<hr />
+
 <p id="Level 9"></p>
 
 <h2 id="level-9">Level 9</h2>
 
-<p>**Riddle Page Level 9: **<a href="http://www.pythonchallenge.com/pc/return/good.html">http://www.pythonchallenge.com/pc/return/good.html</a></p>
+<p><strong>Riddle Page Level 9: (Uname: huge, Pwd: file)</strong> <a href="http://www.pythonchallenge.com/pc/return/good.html">http://www.pythonchallenge.com/pc/return/good.html</a></p>
 
-<p><strong>—— To be continue…</strong></p>
+<p>The title of this page is “connect the dots”, and there are a long lists of numbers for “first”&amp;”second” in the source page. Maybe the numbers are the coordinates of dots which join another picture? Just do it.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MBP-Ethan:TextWrangler xing$ vim pythonchallenge9.py
+'''
+copy &amp; paste the "first" and "second"
+'''
+MBP-Ethan:TextWrangler xing$ python pythonchallenge9.py 
+
+# enter python shell
+&gt;&gt;&gt; from pythonchallenge9 import *
+&gt;&gt;&gt; len(list1), min(list1), max(list1)
+(442, 77, 403)
+&gt;&gt;&gt; len(list2), min(list2), max(list2)
+(112, 77, 220)
+
+&gt;&gt;&gt; import Image
+&gt;&gt;&gt; help(Image.new)
+new(mode, size, color=0)
+Create a new image
+&gt;&gt;&gt; im = Image.new('1', (600, 600), "white")
+&gt;&gt;&gt; import ImageDraw
+&gt;&gt;&gt; line1 = zip(list1[0::2], list1[1::2])
+&gt;&gt;&gt; line2 = zip(list2[0::2], list2[1::2])
+&gt;&gt;&gt; draw = ImageDraw.Draw(im)
+&gt;&gt;&gt; draw.line(line1)
+&gt;&gt;&gt; draw.line(line2)
+&gt;&gt;&gt; im.show()
+</code></pre>
+</div>
+
+<p>A bull showed on the screen.</p>
+
+<p><img class="shadow" src="/img/inPost/PythonChallenge-bull.png" width="320" /></p>
+
+<p>Well, same old, changing the url to get to Level10:
+<a href="http://www.pythonchallenge.com/pc/return/bull.html">http://www.pythonchallenge.com/pc/return/bull.html</a></p>
+
+<h4 id="the-related-2">The Related</h4>
+
+<h5 id="functions-2">functions</h5>
+
+<ul>
+  <li>
+    <p><strong>Image.new(mode, size, color) ⇒ image</strong><br />
+Creates a new image with the given mode and size. Size
+is given as a (width, height)-tuple, in pixels. The
+color is given as a single value for single-band 
+images, and a tuple for multi-band images (with one 
+value for each band). In 1.1.4 and later, you can also 
+use color names (see the ImageColor module 
+documentation for details) If the color argument is 
+omitted, the image is filled with zero (this usually 
+corresponds to black). If the color is None, the image 
+is not initialised. This can be useful if you’re going 
+to paste or draw things in the image.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  from PIL import Image
+  im = Image.new("RGB", (512, 512), "white")
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p><strong>Draw a Grey Cross Over an Image</strong></p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code>  import Image, ImageDraw
+
+  im = Image.open("lena.pgm")
+
+  draw = ImageDraw.Draw(im)
+  draw.line((0, 0) + im.size, fill=128)
+  draw.line((0, im.size[1], im.size[0], 0), fill=128)
+  del draw
+
+  # write to stdout
+  im.save(sys.stdout, "PNG")
+</code></pre>
+    </div>
+  </li>
+</ul>
+
+<hr />
+
+<p id="Level 10"></p>
+
+<h2 id="level-10">Level 10</h2>
+
+<p><strong>Riddle page Level 10</strong>: <a href="http://www.pythonchallenge.com/pc/return/bull.html">http://www.pythonchallenge.com/pc/return/bull.html</a></p>
+
+<p>There’s a picture of a bull and the clue is “len(a[30]) = ?”. Display the source page, and  clicking the href=”sequence.txt” get to the another page which is reveals “a = [1, 11, 21, 1211, 111221, “.  Obviously, we’re asked to solve the sequence puzzle.</p>
+
+<p>Type the numbers into the <strong><a href="https://oeis.org/search?q=1%2C11%2C21%2C1211%2C111221&amp;language=english&amp;go=Search">Online Encyclopedia of Integer Sequences,</a> (OEIS)</strong>. Turns out, this one is <strong>A005150, “Look and say sequence.”</strong></p>
+
+<p>There’s Python code in the OEIS for computing the values of the sequence, but it’s simpler to follow the cross-reference for the length of the n-th term to find the sequence <strong><a href="https://oeis.org/A005341">A005341</a></strong>, it gives the length of the 31st term as 5808.</p>
+
+<p>So, here’s the url of Level 11:
+<a href="http://www.pythonchallenge.com/pc/return/5808.html">http://www.pythonchallenge.com/pc/return/5808.html</a></p>
+
+<hr />
 
 
 
@@ -357,7 +455,7 @@ Decompress data in one shot. If you want to decompress data sequentially, use an
                 <div class="comment">
                     <div class="ds-thread"
                         data-thread-key="/2016/06/25/Python-Challenge"
-                        data-title="Python Challenge"
+                        data-title="Python Challenge (7 - 10)"
                         data-url="http://EthanPen.github.io/2016/06/25/Python-Challenge/" >
                     </div>
                 </div>
@@ -399,13 +497,13 @@ Decompress data in one shot. If you want to decompress data sequentially, use an
                             
                         
                             
+                        
+                            
+                        
+                            
                                 <a href="/tags/#Python" title="Python" rel="6">
                                     Python
                                 </a>
-                            
-                        
-                            
-                        
                             
                         
                             

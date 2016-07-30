@@ -5,9 +5,155 @@
     <description>坐观垂钓者,徒有羡鱼情.</description>
     <link>http://EthanPen.github.io/</link>
     <atom:link href="http://EthanPen.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 21 Jul 2016 17:17:46 +0800</pubDate>
-    <lastBuildDate>Thu, 21 Jul 2016 17:17:46 +0800</lastBuildDate>
+    <pubDate>Sat, 30 Jul 2016 21:00:25 +0800</pubDate>
+    <lastBuildDate>Sat, 30 Jul 2016 21:00:25 +0800</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title> Network Ports Scanner </title>
+        <description>&lt;h2 id=&quot;port-scanner&quot;&gt;Port Scanner&lt;/h2&gt;
+
+&lt;p&gt;Port scanner is an application designed to probe a &lt;strong&gt;server&lt;/strong&gt; or &lt;strong&gt;host&lt;/strong&gt; for open ports. A port scan is a process that sends client requests to a range of server port addresses on a host, with a goal of finding an active port.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;shadow&quot; src=&quot;/img/inPost/PortScanner-execute.png&quot; width=&quot;820&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;tcpip-basic-knowledge&quot;&gt;TCP/IP basic knowledge&lt;/h4&gt;
+
+&lt;p&gt;The design and operation of the internet is based on the &lt;strong&gt;Internet Protocol Suite&lt;/strong&gt;, commonly also called &lt;strong&gt;TCP/IP&lt;/strong&gt;. In this system, hosts and host services are referenced using two components: an address and a port number. There are 65536 distinct and usable port numbers.&lt;/p&gt;
+
+&lt;h3 id=&quot;types&quot;&gt;Types&lt;/h3&gt;
+
+&lt;h5 id=&quot;tcp-scanning&quot;&gt;1. TCP scanning&lt;/h5&gt;
+&lt;p&gt;The simplest port scanners use the operating system’s network function and are generally the next option to go to when &lt;strong&gt;SYN&lt;/strong&gt; is not a feasible option. &lt;strong&gt;Nmap&lt;/strong&gt; calls this mode connect scan, named after the Unix connect() system call. if a port is open, the operating system completes the &lt;strong&gt;TCP three-way handshake&lt;/strong&gt;, and the port scanner immediately closes the connection to avoid performing a &lt;strong&gt;Denial-of-service attack&lt;/strong&gt;. Otherwise an error code is returned. This scan mode has the advantage that the user does not requires special privileges. However, using the OS network function prevents low-level control, so this scan type is less common.&lt;/p&gt;
+
+&lt;h5 id=&quot;syn-scanning&quot;&gt;2. SYN scanning&lt;/h5&gt;
+&lt;p&gt;SYN scan is another form of TCP scanning. Rather than use the operating system’s network functions, the port scanner generates raw IP packets itself, and monitor for responses. This scan type is also known as “half-open scanning”, because it &lt;strong&gt;never&lt;/strong&gt; actually opens a full TCP connection. The port scanner generates a SYN packet. If the target port is open, it will respond with a SYN-ACK packet. The scanner host responds with an RST packet, closing the connection before the handshake is completed. If the port is closed but unfiltered, the target will instantly respond with on RST packet.&lt;br /&gt;
+The use of raw networking has several advantages, giving the scanner full control of the packets sent and the timeout for responses, and allowing detailed reporting of the responses. There is debate over which scan is less intrusive on the target host. SYN scan has the advantage that the individual services never actually receive a connection. However, the RST during the handshake can cause problems for some network stacks, in particular simple devices like printers. There are no conclusive arguments either way.&lt;/p&gt;
+
+&lt;h3 id=&quot;implementation&quot;&gt;Implementation&lt;/h3&gt;
+
+&lt;h4 id=&quot;argsparse&quot;&gt;argsparse&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://pymotw.com/2/argparse/&quot;&gt;argparse – Command line option and argument parsing&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://songpengfei.iteye.com/blog/1320877&quot;&gt;Argparse&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/jianboqi/archive/2013/01/10/2854726.html&quot;&gt;introduction to Argparse&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&#39;&#39;&#39; Use argparse module &#39;&#39;&#39;
+		parser = argparse.ArgumentParser(usage=&#39;Network Port Scanner&#39;, description=&#39; example of using: python PortScan.py -hn baidu.com -p 80-500 &#39;)
+	
+		parser.add_argument(&#39;-hn&#39;, &#39;--host&#39;)
+		parser.add_argument(&#39;-p&#39;, &#39;--port&#39;)
+	
+		args = parser.parse_args()
+		argPort = args.port.split(&#39;-&#39;)
+	
+		HostOrHName = args.host
+		StartPort, EndPort = int(argPort[0]), int(argPort[1])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img class=&quot;shadow&quot; src=&quot;/img/inPost/PortScanner-args-help.png&quot; width=&quot;820&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;multiple-threading&quot;&gt;Multiple Threading&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.python.org/2/library/threading.html&quot;&gt;threading module&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://pymotw.com/2/threading/&quot;&gt;threading – Manage concurrent threads&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Subclass Thread and Creates Subclass Instance&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class MyThread(threading.Thread):
+		def __init__(self, func, port):
+			threading.Thread.__init__(self)
+			self.func = func
+			self.port = port
+	
+		def run(self):
+			apply(self.func, (self.port,))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;the-whole-code&quot;&gt;The whole code&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# -*- coding: utf-8 -*-
+
+import sys
+import argparse
+from socket import *
+import threading
+from time import sleep, ctime
+
+# &#39;&#39;&#39; PortScan.py &amp;lt;host&amp;gt; &amp;lt;StartPort&amp;gt;-&amp;lt;EndPort&amp;gt; &#39;&#39;&#39;
+# host = sys.argv[1]
+# PortStrs = sys.argv[2].split(&#39;-&#39;)
+# 
+# StartPort = int(PortStrs[0])
+# EndPort = int(PortStrs[1])
+
+
+class MyThread(threading.Thread):
+	def __init__(self, func, port):
+		threading.Thread.__init__(self)
+		self.func = func
+		self.port = port
+
+	def run(self):
+		apply(self.func, (self.port,))
+
+def TcpTest(port):
+	sock = socket(AF_INET, SOCK_STREAM)
+	sock.settimeout(4)
+	result = sock.connect_ex((targetIp, port))
+	if result == 0: 
+		print &quot;Opened Port: &quot;, port
+
+if __name__ == &#39;__main__&#39;:
+	&#39;&#39;&#39; Use argparse module &#39;&#39;&#39;
+	parser = argparse.ArgumentParser(usage=&#39;Network Port Scanner&#39;, description=&#39; example of using: python PortScan.py -hn baidu.com -p 80-500 &#39;)
+
+	parser.add_argument(&#39;-hn&#39;, &#39;--host&#39;)
+	parser.add_argument(&#39;-p&#39;, &#39;--port&#39;)
+
+	args = parser.parse_args()
+	argPort = args.port.split(&#39;-&#39;)
+
+	HostOrHName = args.host
+	StartPort, EndPort = int(argPort[0]), int(argPort[1])
+	targetIp = gethostbyname(HostOrHName)
+	print &#39;HostOrHName: %s  and targetIp: %s&#39; % (HostOrHName, targetIp)
+	
+	print &#39;start at: %s \n&#39; % ctime()
+	threads = []
+
+	for port in range(StartPort, EndPort + 1):
+		t = MyThread(TcpTest, port)
+		threads.append(t)
+	
+	for i in range(len(threads)):
+		threads[i].start()
+	
+	for i in range(len(threads)):
+		threads[i].join()
+	
+	print &#39;\nall DONE at: %s&#39; % ctime()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The End.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+</description>
+        <pubDate>Sat, 30 Jul 2016 00:00:00 +0800</pubDate>
+        <link>http://EthanPen.github.io/2016/07/30/Ports-Scanner/</link>
+        <guid isPermaLink="true">http://EthanPen.github.io/2016/07/30/Ports-Scanner/</guid>
+        
+        <category>Python</category>
+        
+        
+      </item>
     
       <item>
         <title> Superimposed Picture </title>
@@ -1317,7 +1463,7 @@ Xtr arg d: 10
       </item>
     
       <item>
-        <title>Python Challenge</title>
+        <title>Python Challenge (7 - 10)</title>
         <description>&lt;blockquote&gt;
   &lt;p&gt;&lt;a href=&quot;http://www.pythonchallenge.com/&quot;&gt;PythonChallenge&lt;/a&gt;&lt;br /&gt;
 To read the pre-Level of PythonChallenge at this site: &lt;a href=&quot;http://jnstar.iteye.com/admin/blogs/2214796&quot;&gt;Ethan.Penx Blog in ITeye&lt;/a&gt;&lt;/p&gt;
@@ -1328,6 +1474,7 @@ To read the pre-Level of PythonChallenge at this site: &lt;a href=&quot;http://j
   &lt;li&gt;&lt;a href=&quot;#Level 7&quot;&gt;Level 7&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#Level 8&quot;&gt;Level 8&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#Level 9&quot;&gt;Level 9&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#Level 10&quot;&gt;Level 10&lt;/a&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;hr /&gt;
@@ -1468,20 +1615,117 @@ Decompress data in one shot. If you want to decompress data sequentially, use an
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;hr /&gt;
+
 &lt;p id=&quot;Level 9&quot;&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;level-9&quot;&gt;Level 9&lt;/h2&gt;
 
-&lt;p&gt;**Riddle Page Level 9: **&lt;a href=&quot;http://www.pythonchallenge.com/pc/return/good.html&quot;&gt;http://www.pythonchallenge.com/pc/return/good.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Riddle Page Level 9: (Uname: huge, Pwd: file)&lt;/strong&gt; &lt;a href=&quot;http://www.pythonchallenge.com/pc/return/good.html&quot;&gt;http://www.pythonchallenge.com/pc/return/good.html&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;—— To be continue…&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The title of this page is “connect the dots”, and there are a long lists of numbers for “first”&amp;amp;”second” in the source page. Maybe the numbers are the coordinates of dots which join another picture? Just do it.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MBP-Ethan:TextWrangler xing$ vim pythonchallenge9.py
+&#39;&#39;&#39;
+copy &amp;amp; paste the &quot;first&quot; and &quot;second&quot;
+&#39;&#39;&#39;
+MBP-Ethan:TextWrangler xing$ python pythonchallenge9.py 
+
+# enter python shell
+&amp;gt;&amp;gt;&amp;gt; from pythonchallenge9 import *
+&amp;gt;&amp;gt;&amp;gt; len(list1), min(list1), max(list1)
+(442, 77, 403)
+&amp;gt;&amp;gt;&amp;gt; len(list2), min(list2), max(list2)
+(112, 77, 220)
+
+&amp;gt;&amp;gt;&amp;gt; import Image
+&amp;gt;&amp;gt;&amp;gt; help(Image.new)
+new(mode, size, color=0)
+Create a new image
+&amp;gt;&amp;gt;&amp;gt; im = Image.new(&#39;1&#39;, (600, 600), &quot;white&quot;)
+&amp;gt;&amp;gt;&amp;gt; import ImageDraw
+&amp;gt;&amp;gt;&amp;gt; line1 = zip(list1[0::2], list1[1::2])
+&amp;gt;&amp;gt;&amp;gt; line2 = zip(list2[0::2], list2[1::2])
+&amp;gt;&amp;gt;&amp;gt; draw = ImageDraw.Draw(im)
+&amp;gt;&amp;gt;&amp;gt; draw.line(line1)
+&amp;gt;&amp;gt;&amp;gt; draw.line(line2)
+&amp;gt;&amp;gt;&amp;gt; im.show()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;A bull showed on the screen.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;shadow&quot; src=&quot;/img/inPost/PythonChallenge-bull.png&quot; width=&quot;320&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Well, same old, changing the url to get to Level10:
+&lt;a href=&quot;http://www.pythonchallenge.com/pc/return/bull.html&quot;&gt;http://www.pythonchallenge.com/pc/return/bull.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;the-related-2&quot;&gt;The Related&lt;/h4&gt;
+
+&lt;h5 id=&quot;functions-2&quot;&gt;functions&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Image.new(mode, size, color) ⇒ image&lt;/strong&gt;&lt;br /&gt;
+Creates a new image with the given mode and size. Size
+is given as a (width, height)-tuple, in pixels. The
+color is given as a single value for single-band 
+images, and a tuple for multi-band images (with one 
+value for each band). In 1.1.4 and later, you can also 
+use color names (see the ImageColor module 
+documentation for details) If the color argument is 
+omitted, the image is filled with zero (this usually 
+corresponds to black). If the color is None, the image 
+is not initialised. This can be useful if you’re going 
+to paste or draw things in the image.&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  from PIL import Image
+  im = Image.new(&quot;RGB&quot;, (512, 512), &quot;white&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Draw a Grey Cross Over an Image&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  import Image, ImageDraw
+
+  im = Image.open(&quot;lena.pgm&quot;)
+
+  draw = ImageDraw.Draw(im)
+  draw.line((0, 0) + im.size, fill=128)
+  draw.line((0, im.size[1], im.size[0], 0), fill=128)
+  del draw
+
+  # write to stdout
+  im.save(sys.stdout, &quot;PNG&quot;)
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;p id=&quot;Level 10&quot;&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;level-10&quot;&gt;Level 10&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Riddle page Level 10&lt;/strong&gt;: &lt;a href=&quot;http://www.pythonchallenge.com/pc/return/bull.html&quot;&gt;http://www.pythonchallenge.com/pc/return/bull.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;There’s a picture of a bull and the clue is “len(a[30]) = ?”. Display the source page, and  clicking the href=”sequence.txt” get to the another page which is reveals “a = [1, 11, 21, 1211, 111221, “.  Obviously, we’re asked to solve the sequence puzzle.&lt;/p&gt;
+
+&lt;p&gt;Type the numbers into the &lt;strong&gt;&lt;a href=&quot;https://oeis.org/search?q=1%2C11%2C21%2C1211%2C111221&amp;amp;language=english&amp;amp;go=Search&quot;&gt;Online Encyclopedia of Integer Sequences,&lt;/a&gt; (OEIS)&lt;/strong&gt;. Turns out, this one is &lt;strong&gt;A005150, “Look and say sequence.”&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;There’s Python code in the OEIS for computing the values of the sequence, but it’s simpler to follow the cross-reference for the length of the n-th term to find the sequence &lt;strong&gt;&lt;a href=&quot;https://oeis.org/A005341&quot;&gt;A005341&lt;/a&gt;&lt;/strong&gt;, it gives the length of the 31st term as 5808.&lt;/p&gt;
+
+&lt;p&gt;So, here’s the url of Level 11:
+&lt;a href=&quot;http://www.pythonchallenge.com/pc/return/5808.html&quot;&gt;http://www.pythonchallenge.com/pc/return/5808.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
 
 </description>
         <pubDate>Sat, 25 Jun 2016 00:00:00 +0800</pubDate>
         <link>http://EthanPen.github.io/2016/06/25/Python-Challenge/</link>
         <guid isPermaLink="true">http://EthanPen.github.io/2016/06/25/Python-Challenge/</guid>
-        
-        <category>Python</category>
         
         <category>PythonChallenge</category>
         

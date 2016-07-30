@@ -10,9 +10,9 @@
     <meta name="keyword"  content="">
     <link rel="shortcut icon" href="/img/favicon.ico">
 
-    <title> Python Module RE - </title>
+    <title> Network Ports Scanner  - </title>
 
-    <link rel="canonical" href="http://EthanPen.github.io/2016/07/01/Python-Module-RE/">
+    <link rel="canonical" href="http://EthanPen.github.io/2016/07/30/Ports-Scanner/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -125,13 +125,13 @@
 
     <!-- Image to hack wechat -->
 <!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
-<!-- <img src="/img/inPost/PythonModuleRE.jpg" width="0" height="0"> -->
+<!-- <img src="/img/Hello-Blog.jpg" width="0" height="0"> -->
 
 <!-- Post Header -->
 <style type="text/css">
     header.intro-header{
         position: relative;
-        background-image: url('/img/inPost/PythonModuleRE.jpg')
+        background-image: url('/img/Hello-Blog.jpg')
     }
 
     
@@ -147,12 +147,12 @@
                         <a class="tag" href="/tags/#Python" title="Python">Python</a>
                         
                     </div>
-                    <h1> Python Module RE</h1>
+                    <h1> Network Ports Scanner </h1>
                     
                     
-                    <h2 class="subheading"> " RE for Regular Expression! "</h2>
+                    <h2 class="subheading"> " A low-level Multiple Thread network ports scanner with python"</h2>
                     
-                    <span class="meta">Posted by Ethan on July 1, 2016</span>
+                    <span class="meta">Posted by Ethan on July 30, 2016</span>
                 </div>
             </div>
         </div>
@@ -170,175 +170,151 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h2 id="re">RE</h2>
+                <h2 id="port-scanner">Port Scanner</h2>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&gt;&gt;&gt; str1 = ' ShenZhen University '
+<p>Port scanner is an application designed to probe a <strong>server</strong> or <strong>host</strong> for open ports. A port scan is a process that sends client requests to a range of server port addresses on a host, with a goal of finding an active port.</p>
 
-&gt;&gt;&gt; str1.find('University')
-10
-&gt;&gt;&gt; str1.find('11')
--1
-&gt;&gt;&gt; help(str1.find)
-find(...)
-S.find(sub [,start [,end]]) -&gt; int
+<p><img class="shadow" src="/img/inPost/PortScanner-execute.png" width="820" /></p>
 
-Return the lowest index in S where substring sub is found,
-such that sub is contained within S[start:end].  Optional
-arguments start and end are interpreted as in slice notation.  
-   
-   
-&gt;&gt;&gt; str1.startswith('Zhen')
-False
-&gt;&gt;&gt; str1.startswith(' Shen')
-True
-&gt;&gt;&gt; import re
-&gt;&gt;&gt; pa = re.compile(r'University')
+<h4 id="tcpip-basic-knowledge">TCP/IP basic knowledge</h4>
 
+<p>The design and operation of the internet is based on the <strong>Internet Protocol Suite</strong>, commonly also called <strong>TCP/IP</strong>. In this system, hosts and host services are referenced using two components: an address and a port number. There are 65536 distinct and usable port numbers.</p>
 
-&gt;&gt;&gt; type(pa)
-&lt;type '_sre.SRE_Pattern'&gt;
-&gt;&gt;&gt; dir(pa)
-['__class__', '__copy__', '__deepcopy__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'findall', 'finditer', 'flags', 'groupindex', 'groups', 'match', 'pattern', 'scanner', 'search', 'split', 'sub', 'subn']
+<h3 id="types">Types</h3>
 
+<h5 id="tcp-scanning">1. TCP scanning</h5>
+<p>The simplest port scanners use the operating system’s network function and are generally the next option to go to when <strong>SYN</strong> is not a feasible option. <strong>Nmap</strong> calls this mode connect scan, named after the Unix connect() system call. if a port is open, the operating system completes the <strong>TCP three-way handshake</strong>, and the port scanner immediately closes the connection to avoid performing a <strong>Denial-of-service attack</strong>. Otherwise an error code is returned. This scan mode has the advantage that the user does not requires special privileges. However, using the OS network function prevents low-level control, so this scan type is less common.</p>
 
-&gt;&gt;&gt; help(pa.match) 
-match(...)
-match(string[, pos[, endpos]]) --&gt; match object or None.
-Matches zero or more characters at the beginning of the string
-(END)
+<h5 id="syn-scanning">2. SYN scanning</h5>
+<p>SYN scan is another form of TCP scanning. Rather than use the operating system’s network functions, the port scanner generates raw IP packets itself, and monitor for responses. This scan type is also known as “half-open scanning”, because it <strong>never</strong> actually opens a full TCP connection. The port scanner generates a SYN packet. If the target port is open, it will respond with a SYN-ACK packet. The scanner host responds with an RST packet, closing the connection before the handshake is completed. If the port is closed but unfiltered, the target will instantly respond with on RST packet.<br />
+The use of raw networking has several advantages, giving the scanner full control of the packets sent and the timeout for responses, and allowing detailed reporting of the responses. There is debate over which scan is less intrusive on the target host. SYN scan has the advantage that the individual services never actually receive a connection. However, the RST during the handshake can cause problems for some network stacks, in particular simple devices like printers. There are no conclusive arguments either way.</p>
 
+<h3 id="implementation">Implementation</h3>
 
-&gt;&gt;&gt; pa = re.compile('University')
-&gt;&gt;&gt; pa.match(str1)
-&gt;&gt;&gt; pa = re.compile(' Shen')
-&gt;&gt;&gt; pa.match(str1)
-&lt;_sre.SRE_Match object at 0x107f13f38&gt;
+<h4 id="argsparse">argsparse</h4>
 
+<p><a href="https://pymotw.com/2/argparse/">argparse – Command line option and argument parsing</a></p>
 
-&gt;&gt;&gt; ma = pa.match(str1)
-&gt;&gt;&gt; ma.group()
-' Shen'
-&gt;&gt;&gt; dir(ma)
-['__class__', '__copy__', '__deepcopy__', '__delattr__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'end', 'endpos', 'expand', 'group', 'groupdict', 'groups', 'lastgroup', 'lastindex', 'pos', 're', 'regs', 'span', 'start', 'string']
+<p><a href="http://songpengfei.iteye.com/blog/1320877">Argparse</a></p>
+
+<p><a href="http://www.cnblogs.com/jianboqi/archive/2013/01/10/2854726.html">introduction to Argparse</a></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>''' Use argparse module '''
+		parser = argparse.ArgumentParser(usage='Network Port Scanner', description=' example of using: python PortScan.py -hn baidu.com -p 80-500 ')
 	
-&gt;&gt;&gt; pa = re.compile(' shen', re.I)
-&gt;&gt;&gt; ma = pa.match(str1)
-&gt;&gt;&gt; ma.group()
-' Shen'
-
-
-&gt;&gt;&gt; ma = re.match(r'hello', 'hello SZU, blah blah')
-&gt;&gt;&gt; ma.group()
-'hello'
-&gt;&gt;&gt; ma.groups()
-()
-&gt;&gt;&gt; ma = re.match(r'(hello)', 'hello SZU, blah blah')
-&gt;&gt;&gt; ma.group()
-'hello'
-&gt;&gt;&gt; ma.groups()
-('hello',)		 
-
-&gt;&gt;&gt; help(re.match)	
-match(pattern, string, flags=0)
-    Try to apply the pattern at the start of the string, returning
-    a match object, or None if no match was found.
-(END)
-
-
-
-
-
-# match a Python variable(start with a '_' or letter)
-&gt;&gt;&gt; ma = re.match(r'[_a-zA-Z]+[_\w]*', '_str1')
-&gt;&gt;&gt; ma
-&lt;_sre.SRE_Match object at 0x107e1eb28&gt;
-&gt;&gt;&gt; ma.group()
-'_str1'
-&gt;&gt;&gt; ma = re.match(r'[_a-zA-Z]+[_\w]*', '123_wer')
-&gt;&gt;&gt; ma
-&gt;&gt;&gt;
+		parser.add_argument('-hn', '--host')
+		parser.add_argument('-p', '--port')
+	
+		args = parser.parse_args()
+		argPort = args.port.split('-')
+	
+		HostOrHName = args.host
+		StartPort, EndPort = int(argPort[0]), int(argPort[1])
 </code></pre>
 </div>
 
-<h3 id="research-an-refindall">re.search an re.findall</h3>
+<p><img class="shadow" src="/img/inPost/PortScanner-args-help.png" width="820" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># re.search and re.findall
-&gt;&gt;&gt; str2 = 'SZU University course = 999'
-&gt;&gt;&gt; str2.find('999')
-24
-&gt;&gt;&gt; 
-&gt;&gt;&gt; info = re.search(r'\d+', str2)
-&gt;&gt;&gt; info.group()
-'999'
-&gt;&gt;&gt; str3 = 'c++ = 100, java = 90, python = 78'
-&gt;&gt;&gt; info = re.search(r'\d+', str3)
-&gt;&gt;&gt; info.group()
-'100'
-&gt;&gt;&gt; info = re.findall(r'\d+', str3)
-&gt;&gt;&gt; type(info)
-&lt;type 'list'&gt;
-&gt;&gt;&gt; info
-['100', '90', '78']
-&gt;&gt;&gt; sum([int(x) for x in info])
-268
-&gt;&gt;&gt; 
+<h4 id="multiple-threading">Multiple Threading</h4>
+
+<p><a href="https://docs.python.org/2/library/threading.html">threading module</a></p>
+
+<p><a href="https://pymotw.com/2/threading/">threading – Manage concurrent threads</a></p>
+
+<p><strong>Subclass Thread and Creates Subclass Instance</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>class MyThread(threading.Thread):
+		def __init__(self, func, port):
+			threading.Thread.__init__(self)
+			self.func = func
+			self.port = port
+	
+		def run(self):
+			apply(self.func, (self.port,))
 </code></pre>
 </div>
 
-<h3 id="resub-and-resplit">re.sub and re.split</h3>
+<h3 id="the-whole-code">The whole code</h3>
 
-<div class="highlighter-rouge"><pre class="highlight"><code># re.sub and re.split
-&gt;&gt;&gt; def add1(match):
-...     val = match.group()
-...     num = int(val)+1
-...     return str(num)
-... 
-&gt;&gt;&gt; str3 = 'SZ University course = 999'
-&gt;&gt;&gt; re.sub(r'\d+', add1, str3)
-'SZ University course = 1000'
+<div class="highlighter-rouge"><pre class="highlight"><code># -*- coding: utf-8 -*-
 
-&gt;&gt;&gt; help(re.sub)
-	sub(pattern, repl, string, count=0, flags=0)
-    Return the string obtained by replacing the leftmost
-    non-overlapping occurrences of the pattern in string by the
-    replacement repl.  repl can be either a string or a callable;
-    if a string, backslash escapes in it are processed.  If it is
-    a callable, it's passed the match object and must return
-    a replacement string to be used.
-(END)
+import sys
+import argparse
+from socket import *
+import threading
+from time import sleep, ctime
 
-&gt;&gt;&gt; str4 = 'progLanguage:C C++ Python Java Php'
-&gt;&gt;&gt; re.split(r':|', str4)
-['progLanguage', 'C C++ Python Java Php']
-&gt;&gt;&gt; re.split(r' :| ', str4)
-['progLanguage:C', 'C++', 'Python', 'Java', 'Php']
+# ''' PortScan.py &lt;host&gt; &lt;StartPort&gt;-&lt;EndPort&gt; '''
+# host = sys.argv[1]
+# PortStrs = sys.argv[2].split('-')
+# 
+# StartPort = int(PortStrs[0])
+# EndPort = int(PortStrs[1])
 
-&gt;&gt;&gt; help(re.split)
-	split(pattern, string, maxsplit=0, flags=0)
-    Split the source string by the occurrences of the pattern,
-    returning a list containing the resulting substrings.
-	(END)
+
+class MyThread(threading.Thread):
+	def __init__(self, func, port):
+		threading.Thread.__init__(self)
+		self.func = func
+		self.port = port
+
+	def run(self):
+		apply(self.func, (self.port,))
+
+def TcpTest(port):
+	sock = socket(AF_INET, SOCK_STREAM)
+	sock.settimeout(4)
+	result = sock.connect_ex((targetIp, port))
+	if result == 0: 
+		print "Opened Port: ", port
+
+if __name__ == '__main__':
+	''' Use argparse module '''
+	parser = argparse.ArgumentParser(usage='Network Port Scanner', description=' example of using: python PortScan.py -hn baidu.com -p 80-500 ')
+
+	parser.add_argument('-hn', '--host')
+	parser.add_argument('-p', '--port')
+
+	args = parser.parse_args()
+	argPort = args.port.split('-')
+
+	HostOrHName = args.host
+	StartPort, EndPort = int(argPort[0]), int(argPort[1])
+	targetIp = gethostbyname(HostOrHName)
+	print 'HostOrHName: %s  and targetIp: %s' % (HostOrHName, targetIp)
+	
+	print 'start at: %s \n' % ctime()
+	threads = []
+
+	for port in range(StartPort, EndPort + 1):
+		t = MyThread(TcpTest, port)
+		threads.append(t)
+	
+	for i in range(len(threads)):
+		threads[i].start()
+	
+	for i in range(len(threads)):
+		threads[i].join()
+	
+	print '\nall DONE at: %s' % ctime()
 </code></pre>
 </div>
+
+<p>The End.</p>
+
+<hr />
 
 
 
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2016/07/01/Notes-of-CorePython/" data-toggle="tooltip" data-placement="top" title="Notes of Core Python Programming, 2nd edition">
+                        <a href="/2016/07/21/Superimposed-Picture/" data-toggle="tooltip" data-placement="top" title=" Superimposed Picture ">
                         Previous<br>
-                        <span>Notes of Core Python Programming, 2nd edition</span>
+                        <span> Superimposed Picture </span>
                         </a>
                     </li>
                     
-                    
-                    <li class="next">
-                        <a href="/2016/07/06/Get-the-Subtitle/" data-toggle="tooltip" data-placement="top" title=" Get the Subtitle">
-                        Next<br>
-                        <span> Get the Subtitle</span>
-                        </a>
-                    </li>
                     
                 </ul>
 
@@ -347,9 +323,9 @@ match(pattern, string, flags=0)
                 <!-- 多说评论框 start -->
                 <div class="comment">
                     <div class="ds-thread"
-                        data-thread-key="/2016/07/01/Python-Module-RE"
-                        data-title=" Python Module RE"
-                        data-url="http://EthanPen.github.io/2016/07/01/Python-Module-RE/" >
+                        data-thread-key="/2016/07/30/Ports-Scanner"
+                        data-title=" Network Ports Scanner "
+                        data-url="http://EthanPen.github.io/2016/07/30/Ports-Scanner/" >
                     </div>
                 </div>
                 <!-- 多说评论框 end -->
